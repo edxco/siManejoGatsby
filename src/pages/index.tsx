@@ -114,7 +114,6 @@ interface IHomePage {
 }
 
 const Home = ({ data }: { data: IHomePage }) => {
-  console.log("data", data);
   return (
     <div style={{ width: "100%", margin: 0, padding: 0 }}>
       <Ciudades edges={data.allStrapiEscuela.edges} />

@@ -7,6 +7,7 @@ import "./index.css";
 import Wrapper from "./Wrapper";
 import { useViewPortSize } from "../hooks";
 import { AppBar } from "../components/AppBar";
+import { Footer } from "../components";
 
 interface LayoutProviderProps {
   seo: boolean;
@@ -30,18 +31,25 @@ const LayoutProvider = (props: LayoutProviderProps) => {
   };
 
   return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <LocalizationProvider dateAdapter={AdapterLuxon}>
-          <AppBar
-            hideNavBar={isMobileFix && hideSocialBar}
-            hideSocialBar={hideSocialBar}
-          />
-          <Wrapper socialHidden={hideSocialBar} onScroll={onScroll} main={true} verticalDirection noScroll>
-            {props.children}
-          </Wrapper>
-        </LocalizationProvider>
-      </ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <LocalizationProvider dateAdapter={AdapterLuxon}>
+        <AppBar
+          hideNavBar={isMobileFix && hideSocialBar}
+          hideSocialBar={hideSocialBar}
+        />
+        <Wrapper
+          socialHidden={hideSocialBar}
+          onScroll={onScroll}
+          main={true}
+          verticalDirection
+          noScroll
+        >
+          {props.children}
+        </Wrapper>
+        <Footer />
+      </LocalizationProvider>
+    </ThemeProvider>
   );
 };
 

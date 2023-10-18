@@ -12,6 +12,12 @@ export interface IAllStrapiEscuela {
   allStrapiEscuela: IEscuelas;
 }
 
+export interface INumerosContacto {
+  id: string;
+  telefono: string;
+  whatsapp: string;
+}
+
 export interface IEscuela {
   id: string;
   slug: string;
@@ -38,11 +44,7 @@ export interface IEscuela {
       id: string;
     };
   };
-  numerosContacto: {
-    id: string;
-    telefono: string;
-    whatsapp: string;
-  };
+  numerosContacto: INumerosContacto;
   sucursal: string;
   titulo: string;
   terminosCondiciones: string;

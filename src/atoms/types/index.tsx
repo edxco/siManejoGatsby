@@ -1,4 +1,4 @@
-export { IAllStrapiEscuela, IEscuela, IEscuelas } from "./cities";
+export { IAllStrapiEscuela, IEscuela, IEscuelas, INumerosContacto } from "./cities";
 
 export { IStrapiInicio, IBeneficio, IBeneficios, IStrapiCtaBanner, ICtaBanner } from "./homePage";
 

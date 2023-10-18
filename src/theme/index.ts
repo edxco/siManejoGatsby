@@ -24,10 +24,10 @@ const theme = createTheme({
   grayScale: {
     dark: "rgb(129, 133, 137)",
     main: "rgb(192, 192, 192)",
-    light: "rgb(211, 211, 211)",
+    light: "rgb(242, 237, 237)",
   },
   backGroundColors: {
-    dark: '',
+    dark: '#1a2e42',
     main: '#F5F5F5',
     light: '#f8f9fc',
   },

@@ -15,7 +15,7 @@ const MainContainer = styled.div(() => ({
 }));
 
 const ContactContainer = styled.div(({ colorTxt }: { colorTxt: string }) => ({
-  paddingLeft: "25px",
+  paddingLeft: "12px",
   color: colorTxt,
 }));
 
@@ -37,9 +37,8 @@ const LinkContact = styled(Link)(() => ({
 }));
 
 interface IFooterBranchList {
-  data: ISchoolData[];
+  branches: ISchoolData[];
   title: string;
-  icon?: "location";
 }
 
 const FooterBranchList = (props: IFooterBranchList) => {
@@ -58,7 +57,7 @@ const FooterBranchList = (props: IFooterBranchList) => {
         {props.title}
       </Typography>
       <ContactContainer colorTxt={theme.grayScale.light}>
-        {props.data.map((branch) => (
+        {props.branches.map((branch) => (
           <>
             <ContactIconAndTitle>{branch.node.sucursal}</ContactIconAndTitle>
             <PhoneContainer txtColor={theme.grayScale.main}>

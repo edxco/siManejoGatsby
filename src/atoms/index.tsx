@@ -6,3 +6,4 @@ export { default as HorizontalBar } from "./containers/HorizontalBar";
 export { FlexContainerCenter } from "./containers/DivContainers";
 export { default as VideoBg } from "./containers/VideoBg";
 export { default as FooterBranchList } from "./containers/FooterBranchList";
+export { default as FooterBlogList } from "./containers/FooterBlogList";

@@ -1,7 +1,11 @@
 import React from "react";
 import { INumerosContacto } from "../../atoms/types";
 import theme from "../../theme";
-import { FlexContainerCenter, FooterBranchList } from "../../atoms";
+import {
+  FlexContainerCenter,
+  FooterBlogList,
+  FooterBranchList,
+} from "../../atoms";
 import { webSizes } from "../../constants";
 import styled from "@emotion/styled";
 import { useTableOrMobile } from "../../hooks";
@@ -20,21 +24,24 @@ interface IMainFooter {
   blogs: Array<{ node: { createdAt: string; titulo: string } }>;
 }
 
-const MainContainer = styled.div(() => ({
+const MainContainer = styled.div(({ mobileSize }: { mobileSize: boolean }) => ({
   width: "100%",
   maxWidth: webSizes.maxWidth,
-  margin: '20px 0',
+  margin: mobileSize ? "20px 15px 0 0" : "20px 0",
   padding: 0,
   backgroundColor: theme.backGroundColors.dark,
   display: "flex",
+  flexDirection: mobileSize ? 'column' : 'row',
 }));
 
 const MainFooter = (props: IMainFooter) => {
-console.log('props', props)
+  const [mobileSize, tabletSize] = useTableOrMobile();
+
   return (
     <FlexContainerCenter bgColor={theme.backGroundColors.dark}>
-      <MainContainer>
-        <FooterBranchList title={"Sucursales"} data={props.schoolData} />
+      <MainContainer mobileSize={mobileSize}>
+        <FooterBranchList title={"Sucursales"} branches={props.schoolData} />
+        <FooterBlogList title={"Últimos blogs"} latestBlogs={props.blogs} />
       </MainContainer>
     </FlexContainerCenter>
   );

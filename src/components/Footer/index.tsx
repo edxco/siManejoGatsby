@@ -5,6 +5,13 @@ import { INumerosContacto } from "../../atoms/types";
 
 const queryFooter = graphql`
   query {
+    strapiFooter {
+      link {
+        id
+        section
+        slug
+      }
+    }
     allStrapiEscuela {
       edges {
         node {
@@ -23,6 +30,7 @@ const queryFooter = graphql`
       edges {
         node {
           titulo
+          slug
           createdAt
           blog_categoria {
             categoria
@@ -44,9 +52,16 @@ export interface IFooterBlog {
   createdAt: string;
   titulo: string;
   media: any;
+  slug: string;
   blog_categoria: {
     categoria: string;
   };
+}
+
+export interface ILink {
+  id: string;
+  section: string;
+  slug: string;
 }
 
 interface IFooter {
@@ -63,6 +78,9 @@ interface IFooter {
   allStrapiBlog: {
     edges: Array<{ node: IFooterBlog }>;
   };
+  strapiFooter: {
+    link: Array<ILink>;
+  };
 }
 
 const Footer = () => {
@@ -72,6 +90,7 @@ const Footer = () => {
       <MainFooter
         blogs={data.allStrapiBlog.edges}
         schoolData={data.allStrapiEscuela.edges}
+        footerLink={data.strapiFooter.link}
       />
     </div>
   );

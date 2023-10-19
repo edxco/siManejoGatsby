@@ -22,7 +22,7 @@ const strapiConfig = {
           categories: "*",
         },
       },
-    }, `cta-banner`
+    }, `cta-banner`, `footer`
   ],
   // remoteFileHeaders: {
   //   /**

@@ -6,9 +6,11 @@ import { useAPIURL, useTableOrMobile } from "../../hooks";
 import { IFooterBlog } from "../../components/Footer";
 import { truncateText } from "../../helpers";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { CustomAccordion, CustomLink } from "..";
 
 const MainContainer = styled.div(({ mobileSize }: { mobileSize: boolean }) => ({
-  maxWidth: mobileSize ? "100%" : "300px",
+  maxWidth: "300px",
+  minWidth: mobileSize ? "100%" : "300px",
   width: "100%",
   margin: 0,
   padding: 0,
@@ -48,8 +50,15 @@ const KeepReading = styled.div(() => ({
   justifyContent: "flex-end",
 }));
 
+const LinkContainer = styled.div(({ mobileSize }: { mobileSize: boolean }) => ({
+  display: "flex",
+  justifyContent: "flex-start",
+  flexDirection: "column",
+  marginLeft: mobileSize ? 0 : "10px",
+}));
+
 interface IFooterBlogList {
-  latestBlogs: { node: IFooterBlog }[];
+  latestBlogs: Array<{ node: IFooterBlog }>;
   title: string;
 }
 
@@ -60,49 +69,75 @@ const FooterBlogList = (props: IFooterBlogList) => {
 
   return (
     <MainContainer mobileSize={mobileSize}>
-      <Typography
-        variant="h6"
-        fontWeight={900}
-        align="left"
-        color={"white"}
-        margin={"20px 10px 10px 10px"}
-      >
-        {props.title}
-      </Typography>
-      {props.latestBlogs.map((blog) => (
-        <BlogContainer underline="none" href="#">
-          <ImgCard
-            imgUrl={
-              API_URL +
-              blog.node.media.localFile.childImageSharp.gatsbyImageData.images
-                .fallback.src
-            }
-          />
-          <TextContainer>
-            <Typography
-              variant="body2"
-              fontWeight={600}
-              align="left"
-              color={theme.grayScale.light}
-              sx={{ mb: 0.5 }}
-            >
-              {truncateText(blog.node.titulo, 35)}
-            </Typography>
-            <KeepReading>
-              <Typography
-                variant="subtitle2"
+      {mobileSize || tabletSize ? (
+        <CustomAccordion title={props.title}>
+          <LinkContainer mobileSize={mobileSize || tabletSize}>
+            {props.latestBlogs.map((blog, index) => (
+              <CustomLink
+                variant="body1"
                 fontWeight={400}
                 align="left"
+                underline="none"
                 color={theme.grayScale.light}
-                sx={{ mb: 0.5 }}
+                href={blog.node.slug}
+                sx={{mb: 2}}
+                hoverColor={theme.siManejoSecondary.main}
+                key={blog.node.titulo + index}
               >
-                Seguir leyendo
-              </Typography>
-              <KeyboardArrowRightIcon sx={{ color: theme.grayScale.light }} />
-            </KeepReading>
-          </TextContainer>
-        </BlogContainer>
-      ))}
+                {blog.node.titulo}
+              </CustomLink>
+            ))}
+          </LinkContainer>
+        </CustomAccordion>
+      ) : (
+        <>
+          <Typography
+            variant="h6"
+            fontWeight={900}
+            align="left"
+            color={"white"}
+            margin={"20px 10px 10px 10px"}
+          >
+            {props.title}
+          </Typography>
+          {props.latestBlogs.map((blog) => (
+            <BlogContainer underline="none" href="#">
+              <ImgCard
+                imgUrl={
+                  API_URL +
+                  blog.node.media.localFile.childImageSharp.gatsbyImageData
+                    .images.fallback.src
+                }
+              />
+              <TextContainer>
+                <Typography
+                  variant="body2"
+                  fontWeight={600}
+                  align="left"
+                  color={theme.grayScale.light}
+                  sx={{ mb: 0.5 }}
+                >
+                  {truncateText(blog.node.titulo, 35)}
+                </Typography>
+                <KeepReading>
+                  <Typography
+                    variant="subtitle2"
+                    fontWeight={400}
+                    align="left"
+                    color={theme.grayScale.light}
+                    sx={{ mb: 0.5 }}
+                  >
+                    Seguir leyendo
+                  </Typography>
+                  <KeyboardArrowRightIcon
+                    sx={{ color: theme.grayScale.light }}
+                  />
+                </KeepReading>
+              </TextContainer>
+            </BlogContainer>
+          ))}
+        </>
+      )}
     </MainContainer>
   );
 };

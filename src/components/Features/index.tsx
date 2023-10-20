@@ -43,7 +43,7 @@ const Features = (props: IBeneficios) => {
       tabletSize={tabletSize}
     >
       <TitleAndSubtitle title={"Beneficios Si Manejo"} />
-      <FlexContainerCenter maxWidth="1280px">
+      <FlexContainerCenter maxWidth="1280px" padding={mobileSize ? '0 20px' : '0'}>
         {props.beneficios.map((item, index) => (
           <IconAndTitle
             title={item.titulo}

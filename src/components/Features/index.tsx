@@ -24,8 +24,9 @@ const FeatureSection = styled.div(
     flexDirection: "column",
     width: "100%",
     gap: 50,
-    padding: mobileSize || tabletSize ? "60px 25px" : "60px 0",
-    paddingBottom: "400px",
+    // padding: mobileSize || tabletSize ? "60px 25px" : "60px 0",
+    paddingBottom: "100px",
+    paddingTop: "100px",
     backgroundColor: bgColor,
     flexWrap: "wrap",
   })
@@ -34,14 +35,14 @@ const FeatureSection = styled.div(
 const Features = (props: IBeneficios) => {
   const theme = useTheme();
   const [mobileSize, tabletSize] = useTableOrMobile();
-  
+
   return (
     <FeatureSection
       bgColor={theme.backGroundColors.light}
       mobileSize={mobileSize}
       tabletSize={tabletSize}
     >
-      <TitleAndSubtitle title={"Nuestras Ventajas"} />
+      <TitleAndSubtitle title={"Beneficios Si Manejo"} />
       <FlexContainerCenter maxWidth="1280px">
         {props.beneficios.map((item, index) => (
           <IconAndTitle

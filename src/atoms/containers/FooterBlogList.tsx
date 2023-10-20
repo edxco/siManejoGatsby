@@ -48,6 +48,7 @@ const TextContainer = styled.div(() => ({
 const KeepReading = styled.div(() => ({
   display: "flex",
   justifyContent: "flex-end",
+  marginRight: '10px',
 }));
 
 const LinkContainer = styled.div(({ mobileSize }: { mobileSize: boolean }) => ({
@@ -114,7 +115,7 @@ const FooterBlogList = (props: IFooterBlogList) => {
                   variant="body2"
                   fontWeight={600}
                   align="left"
-                  color={theme.grayScale.light}
+                  color={'white'}
                   sx={{ mb: 0.5 }}
                 >
                   {truncateText(blog.node.titulo, 35)}

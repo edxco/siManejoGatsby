@@ -8,7 +8,7 @@ import { IEscuelas } from "../../atoms/types";
 import Logo from "../../images/simanejoLogo.png";
 
 const MainContainer = styled.div(() => ({
-  padding: "50px 0",
+  padding: "100px 0",
 }));
 
 const CenteredContainer = styled.div(({ bgColor }: { bgColor: string }) => ({

@@ -6,6 +6,7 @@ import {
   FooterBlogList,
   FooterBranchList,
   FooterList,
+  SiManejoData,
 } from "../../atoms";
 import { webSizes } from "../../constants";
 import styled from "@emotion/styled";
@@ -24,32 +25,58 @@ export interface ISchoolData {
 interface IMainFooter {
   schoolData: Array<ISchoolData>;
   blogs: Array<{ node: IFooterBlog }>;
-  footerLink: Array<ILink>;
+  footerData: { description: string; link: Array<ILink> };
 }
 
-const MainContainer = styled.div(({ mobileSize, tabletSize }: { mobileSize: boolean, tabletSize: boolean }) => ({
-  width: "100%",
-  maxWidth: webSizes.maxWidth,
-  margin: (mobileSize || tabletSize) ? "20px 15px 0 0" : "20px 0",
-  padding: 0,
-  backgroundColor: theme.backGroundColors.dark,
-  display: "flex",
-  flexDirection: (mobileSize || tabletSize) ? "column" : "row",
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexWrap: 'wrap',
-  marginBottom: (mobileSize || tabletSize) ? '30px' : 0,
-}));
+const MainContainer = styled.div(
+  ({
+    mobileSize,
+    tabletSize,
+  }: {
+    mobileSize: boolean;
+    tabletSize: boolean;
+  }) => ({
+    width: "100%",
+    maxWidth: webSizes.maxWidth,
+    margin: mobileSize || tabletSize ? "20px 15px 0 0" : "20px 0",
+    padding: 0,
+    display: "flex",
+    flexDirection: mobileSize ? "column" : "row",
+    justifyContent: mobileSize || tabletSize ? "center" : "space-between",
+    alignItems: mobileSize ? "center" : "flex-start",
+    flexWrap: "wrap",
+    marginBottom: mobileSize || tabletSize ? "30px" : 0,
+    gap: mobileSize || tabletSize ? 30 : 0,
+  })
+);
+
+const ColumnsFooter = styled.div(
+  ({
+    mobileSize,
+    tabletSize,
+  }: {
+    mobileSize: boolean;
+    tabletSize: boolean;
+  }) => ({
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    flexDirection: mobileSize || tabletSize ? "column" : "row",
+  })
+);
 
 const MainFooter = (props: IMainFooter) => {
   const [mobileSize, tabletSize] = useTableOrMobile();
-
+  console.log("props", props);
   return (
-    <FlexContainerCenter bgColor={theme.backGroundColors.dark}>
+    <FlexContainerCenter bgColor={theme.backGroundColors.dark} padding={'10px 0 50px 0'}>
       <MainContainer mobileSize={mobileSize} tabletSize={tabletSize}>
-        <FooterBranchList title={"Sucursales"} branches={props.schoolData} />
-        <FooterList title={"Si Manejo"} listData={props.footerLink} />
-        <FooterBlogList title={"Últimos blogs"} latestBlogs={props.blogs} />
+        <SiManejoData brief={props.footerData.description} />
+        <ColumnsFooter mobileSize={mobileSize} tabletSize={tabletSize}>
+          <FooterBranchList title={"Sucursales"} branches={props.schoolData} />
+          <FooterList title={"Si Manejo"} listData={props.footerData.link} />
+          <FooterBlogList title={"Últimos blogs"} latestBlogs={props.blogs} />
+        </ColumnsFooter>
       </MainContainer>
     </FlexContainerCenter>
   );

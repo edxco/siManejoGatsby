@@ -6,6 +6,7 @@ import { INumerosContacto } from "../../atoms/types";
 const queryFooter = graphql`
   query {
     strapiFooter {
+      description
       link {
         id
         section
@@ -62,6 +63,7 @@ export interface ILink {
   id: string;
   section: string;
   slug: string;
+  descripcion: string;
 }
 
 interface IFooter {
@@ -79,18 +81,20 @@ interface IFooter {
     edges: Array<{ node: IFooterBlog }>;
   };
   strapiFooter: {
+    description:string;
     link: Array<ILink>;
   };
 }
 
 const Footer = () => {
   const data = useStaticQuery<IFooter>(queryFooter);
+  
   return (
     <div style={{ width: "100%", margin: 0, padding: 0 }}>
       <MainFooter
         blogs={data.allStrapiBlog.edges}
         schoolData={data.allStrapiEscuela.edges}
-        footerLink={data.strapiFooter.link}
+        footerData={data.strapiFooter}
       />
     </div>
   );

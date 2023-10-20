@@ -2041,6 +2041,7 @@ type Query_strapiEscuelaDescripcionTextnodeArgs = {
 type Query_strapiFooterArgs = {
   children: InputMaybe<NodeFilterListInput>;
   createdAt: InputMaybe<DateQueryOperatorInput>;
+  description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   link: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFilterListInput>;
@@ -3064,6 +3065,7 @@ type STRAPI_ESCUELA_DESCRIPCION_TEXTNODESortInput = {
 type STRAPI_FOOTER = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly createdAt: Maybe<Scalars['Date']>;
+  readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly link: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS>>>;
@@ -3145,6 +3147,7 @@ type STRAPI_FOOTEREdge = {
 type STRAPI_FOOTERFieldSelector = {
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly description: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly link: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector>;
@@ -3157,6 +3160,7 @@ type STRAPI_FOOTERFieldSelector = {
 type STRAPI_FOOTERFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly link: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFilterListInput>;
@@ -3210,6 +3214,7 @@ type STRAPI_FOOTERGroupConnection_sumArgs = {
 type STRAPI_FOOTERSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly description: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly link: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSSortInput>;

@@ -40,15 +40,15 @@ const LinkContainerJSX = ({
   <LinkContainer mobileSize={mobileSize}>
     {listData.map((link) => (
       <CustomLink
-            variant="body1"
-            fontWeight={400}
-            align="left"
-            underline="none"
-            color={color}
-            href={link.slug} 
-            hoverColor={hoverColor}
-            sx={{mb: 2}}
-        >
+        variant="body1"
+        fontWeight={400}
+        align="left"
+        underline="none"
+        color={color}
+        href={link.slug}
+        hoverColor={hoverColor}
+        sx={{ mb: 2 }}
+      >
         {link.section}
       </CustomLink>
     ))}
@@ -85,6 +85,7 @@ const FooterList = (props: IFooterList) => {
             color={theme.grayScale.light}
             listData={props.listData}
             mobileSize={mobileSize || tabletSize}
+            hoverColor={theme.siManejoSecondary.main}
           />
         </>
       )}

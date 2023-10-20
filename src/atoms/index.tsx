@@ -8,4 +8,5 @@ export { default as VideoBg } from "./containers/VideoBg";
 export { default as FooterBranchList } from "./containers/FooterBranchList";
 export { default as FooterBlogList } from "./containers/FooterBlogList";
 export { default as FooterList } from "./containers/FooterList";
-export { default as CustomAccordion } from './containers/CustomAccordion'
+export { default as CustomAccordion } from './containers/CustomAccordion';
+export { default as SiManejoData } from './containers/SiManejoData';

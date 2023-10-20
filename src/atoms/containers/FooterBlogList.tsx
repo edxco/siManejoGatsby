@@ -10,7 +10,7 @@ import { CustomAccordion, CustomLink } from "..";
 
 const MainContainer = styled.div(({ mobileSize }: { mobileSize: boolean }) => ({
   maxWidth: "300px",
-  minWidth: mobileSize ? "100%" : "300px",
+  minWidth: "300px",
   width: "100%",
   margin: 0,
   padding: 0,
@@ -21,7 +21,7 @@ const BlogContainer = styled(Link)(() => ({
   display: "flex",
   justifyContent: "flex-start",
   gap: 15,
-  backgroundColor: "rgba(37, 79, 139, 0.7)",
+  backgroundColor: "rgba(22, 57, 100, 0.7)",
   borderRadius: "14px",
   "&:hover": {
     backgroundColor: "rgba(37, 79, 139, 0.4)",
@@ -80,7 +80,7 @@ const FooterBlogList = (props: IFooterBlogList) => {
                 underline="none"
                 color={theme.grayScale.light}
                 href={blog.node.slug}
-                sx={{mb: 2}}
+                sx={{ mb: 2 }}
                 hoverColor={theme.siManejoSecondary.main}
                 key={blog.node.titulo + index}
               >

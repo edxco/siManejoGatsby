@@ -11,7 +11,7 @@ const theme = createTheme({
   },
   siManejoPrimary: {
     main: "rgb(26, 56, 99)",
-    light: "rgb(37, 79, 139)",
+    light: "rgb(22, 57, 100)",
   },
   siManejoSecondary: {
     main: "rgb(203, 22, 27)",

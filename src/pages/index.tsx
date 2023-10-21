@@ -5,9 +5,10 @@ import {
   Ciudades,
   Features,
   GoogleReviews,
+  PaymentMethods,
   SubscribeBanner,
 } from "../components";
-import { IEscuelas, IBeneficios, ICtaBanner } from "../atoms/types";
+import { IEscuelas, IHomePage, ICtaBanner } from "../atoms/types";
 import { IAllStrapiBlogNodes } from "../atoms/types/blog";
 
 export const query = graphql`
@@ -58,6 +59,16 @@ export const query = graphql`
       }
     }
     strapiInicio {
+      paymentOption {
+        payment
+        image {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
+        }
+      }
       beneficios {
         titulo
         icono {
@@ -106,17 +117,18 @@ export const query = graphql`
   }
 `;
 
-interface IHomePage {
+interface IHomePageMain {
   allStrapiEscuela: IEscuelas;
-  strapiInicio: IBeneficios;
+  strapiInicio: IHomePage;
   allStrapiBlog: IAllStrapiBlogNodes;
   strapiCtaBanner: ICtaBanner;
 }
 
-const Home = ({ data }: { data: IHomePage }) => {
+const Home = ({ data }: { data: IHomePageMain }) => {
   return (
     <div style={{ width: "100%", margin: 0, padding: 0 }}>
       <Ciudades edges={data.allStrapiEscuela.edges} />
+      <PaymentMethods paymentOption={data.strapiInicio.paymentOption} />
       <SubscribeBanner
         media={data.strapiCtaBanner.media}
         subTitulo={data.strapiCtaBanner.subTitulo}

@@ -1,13 +1,7 @@
 import React from "react";
 import { INumerosContacto } from "../../atoms/types";
 import theme from "../../theme";
-import {
-  FlexContainerCenter,
-  FooterBlogList,
-  FooterBranchList,
-  FooterList,
-  SiManejoData,
-} from "../../atoms";
+import { FlexContainerCenter } from "../../atoms";
 import { webSizes } from "../../constants";
 import styled from "@emotion/styled";
 import { useTableOrMobile } from "../../hooks";
@@ -45,23 +39,8 @@ const MainContainer = styled.div(
     justifyContent: mobileSize || tabletSize ? "center" : "space-between",
     alignItems: mobileSize ? "center" : "flex-start",
     flexWrap: "wrap",
-    marginBottom: mobileSize || tabletSize ? "30px" : 0,
+    marginBottom: mobileSize || tabletSize ? '30px' : "0",
     gap: mobileSize || tabletSize ? 30 : 0,
-  })
-);
-
-const ColumnsFooter = styled.div(
-  ({
-    mobileSize,
-    tabletSize,
-  }: {
-    mobileSize: boolean;
-    tabletSize: boolean;
-  }) => ({
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "flex-start",
-    flexDirection: mobileSize || tabletSize ? "column" : "row",
   })
 );
 
@@ -69,19 +48,22 @@ const SecondaryFooter = () => {
   const [mobileSize, tabletSize] = useTableOrMobile();
 
   return (
-    <FlexContainerCenter
-      bgColor={theme.siManejoPrimary.light}
-      padding={"10px 0"}
-    >
+    <FlexContainerCenter bgColor={theme.siManejoPrimary.light}>
       <MainContainer mobileSize={mobileSize} tabletSize={tabletSize}>
         <Typography
           variant="body1"
           fontWeight={400}
           align="center"
           color={"white"}
-          margin={mobileSize ? '20px 30px 0 30px' : "20px 0"}
+          margin={mobileSize ? "20px 30px 0 30px" : "20px 0"}
         >
-          Creado y programado con pasión por <span style={{fontWeight: 900, color: theme.siManejoTertiary.light}}>Taquito Partners</span>
+          Creado y programado con pasión por{" "}
+          <span
+            style={{ fontWeight: 900, color: theme.siManejoTertiary.light }}
+          >
+            Taquito Partners
+          </span>{" "}
+          🇲🇽
         </Typography>
         <Typography
           variant="caption"
@@ -90,8 +72,10 @@ const SecondaryFooter = () => {
           color={"white"}
           margin={mobileSize ? 0 : "20px 0"}
         >
-          © Copyright <span style={{fontWeight: 900 }}>Si Manejo</span> 2014- {new Date().getFullYear()}
+          © Copyright <span style={{ fontWeight: 900 }}>Si Manejo</span> 2014-
+          {new Date().getFullYear()}
         </Typography>
+        {/* <div style={{height: mobileSize || tabletSize ? '10px' : 0}} /> */}
       </MainContainer>
     </FlexContainerCenter>
   );

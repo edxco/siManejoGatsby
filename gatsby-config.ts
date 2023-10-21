@@ -19,6 +19,9 @@ const strapiConfig = {
           beneficios: {
             populate: "*",
           },
+          paymentOption: {
+            populate: "*",
+          },
           categories: "*",
         },
       },

@@ -1459,6 +1459,7 @@ type Query = {
   readonly allStrapiComponentHighlightHighlight: STRAPI__COMPONENT_HIGHLIGHT_HIGHLIGHTConnection;
   readonly allStrapiComponentHorarioHorario: STRAPI__COMPONENT_HORARIO_HORARIOConnection;
   readonly allStrapiComponentNumerosContactoNumerosContacto: STRAPI__COMPONENT_NUMEROS_CONTACTO_NUMEROS_CONTACTOConnection;
+  readonly allStrapiComponentOpcionesPagoOpcionesPago: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection;
   readonly allStrapiCtaBanner: STRAPI_CTA_BANNERConnection;
   readonly allStrapiEscuela: STRAPI_ESCUELAConnection;
   readonly allStrapiEscuelaDescripcionTextnode: STRAPI_ESCUELA_DESCRIPCION_TEXTNODEConnection;
@@ -1484,6 +1485,7 @@ type Query = {
   readonly strapiComponentHighlightHighlight: Maybe<STRAPI__COMPONENT_HIGHLIGHT_HIGHLIGHT>;
   readonly strapiComponentHorarioHorario: Maybe<STRAPI__COMPONENT_HORARIO_HORARIO>;
   readonly strapiComponentNumerosContactoNumerosContacto: Maybe<STRAPI__COMPONENT_NUMEROS_CONTACTO_NUMEROS_CONTACTO>;
+  readonly strapiComponentOpcionesPagoOpcionesPago: Maybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
   readonly strapiCtaBanner: Maybe<STRAPI_CTA_BANNER>;
   readonly strapiEscuela: Maybe<STRAPI_ESCUELA>;
   readonly strapiEscuelaDescripcionTextnode: Maybe<STRAPI_ESCUELA_DESCRIPCION_TEXTNODE>;
@@ -1642,6 +1644,14 @@ type Query_allStrapiComponentNumerosContactoNumerosContactoArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI__COMPONENT_NUMEROS_CONTACTO_NUMEROS_CONTACTOSortInput>>>;
+};
+
+
+type Query_allStrapiComponentOpcionesPagoOpcionesPagoArgs = {
+  filter: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOSortInput>>>;
 };
 
 
@@ -1990,6 +2000,17 @@ type Query_strapiComponentNumerosContactoNumerosContactoArgs = {
 };
 
 
+type Query_strapiComponentOpcionesPagoOpcionesPagoArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  image: InputMaybe<STRAPI__MEDIAFilterInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  payment: InputMaybe<StringQueryOperatorInput>;
+  strapi_id: InputMaybe<IntQueryOperatorInput>;
+};
+
+
 type Query_strapiCtaBannerArgs = {
   children: InputMaybe<NodeFilterListInput>;
   createdAt: InputMaybe<DateQueryOperatorInput>;
@@ -2059,6 +2080,7 @@ type Query_strapiInicioArgs = {
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
+  paymentOption: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterListInput>;
   publishedAt: InputMaybe<DateQueryOperatorInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
   updatedAt: InputMaybe<DateQueryOperatorInput>;
@@ -3231,6 +3253,7 @@ type STRAPI_INICIO = Node & {
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
+  readonly paymentOption: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>>>;
   readonly publishedAt: Maybe<Scalars['Date']>;
   readonly strapi_id: Maybe<Scalars['Int']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
@@ -3312,6 +3335,7 @@ type STRAPI_INICIOFieldSelector = {
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly paymentOption: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector>;
   readonly publishedAt: InputMaybe<FieldSelectorEnum>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
   readonly updatedAt: InputMaybe<FieldSelectorEnum>;
@@ -3324,6 +3348,7 @@ type STRAPI_INICIOFilterInput = {
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
+  readonly paymentOption: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterListInput>;
   readonly publishedAt: InputMaybe<DateQueryOperatorInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
   readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
@@ -3377,6 +3402,7 @@ type STRAPI_INICIOSortInput = {
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
+  readonly paymentOption: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOSortInput>;
   readonly publishedAt: InputMaybe<SortOrderEnum>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;
   readonly updatedAt: InputMaybe<SortOrderEnum>;
@@ -4274,6 +4300,136 @@ type STRAPI__COMPONENT_NUMEROS_CONTACTO_NUMEROS_CONTACTOSortInput = {
   readonly strapi_id: InputMaybe<SortOrderEnum>;
   readonly telefono: InputMaybe<SortOrderEnum>;
   readonly whatsapp: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly id: Scalars['ID'];
+  readonly image: Maybe<STRAPI__MEDIA>;
+  readonly internal: Internal;
+  readonly parent: Maybe<Node>;
+  readonly payment: Maybe<Scalars['String']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOEdge>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_groupArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_maxArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_minArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_sumArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOEdge = {
+  readonly next: Maybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
+  readonly node: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO;
+  readonly previous: Maybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly image: InputMaybe<STRAPI__MEDIAFieldSelector>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly payment: InputMaybe<FieldSelectorEnum>;
+  readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly image: InputMaybe<STRAPI__MEDIAFilterInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly payment: InputMaybe<StringQueryOperatorInput>;
+  readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterInput>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_groupArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_maxArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_minArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_sumArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly image: InputMaybe<STRAPI__MEDIASortInput>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly payment: InputMaybe<SortOrderEnum>;
+  readonly strapi_id: InputMaybe<SortOrderEnum>;
 };
 
 type STRAPI__MEDIA = Node & {

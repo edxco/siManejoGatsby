@@ -67,7 +67,7 @@ const ColumnsFooter = styled.div(
 
 const MainFooter = (props: IMainFooter) => {
   const [mobileSize, tabletSize] = useTableOrMobile();
-  console.log("props", props);
+  
   return (
     <FlexContainerCenter bgColor={theme.backGroundColors.dark} padding={'10px 0 50px 0'}>
       <MainContainer mobileSize={mobileSize} tabletSize={tabletSize}>

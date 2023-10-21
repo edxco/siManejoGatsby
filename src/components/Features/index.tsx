@@ -6,7 +6,7 @@ import {
   IconAndTitle,
   TitleAndSubtitle,
 } from "../../atoms";
-import { IBeneficios } from "../../atoms/types";
+import { IHomePage } from "../../atoms/types";
 import { useTableOrMobile } from "../../hooks";
 
 const FeatureSection = styled.div(
@@ -24,7 +24,6 @@ const FeatureSection = styled.div(
     flexDirection: "column",
     width: "100%",
     gap: 50,
-    // padding: mobileSize || tabletSize ? "60px 25px" : "60px 0",
     paddingBottom: "100px",
     paddingTop: "100px",
     backgroundColor: bgColor,
@@ -32,7 +31,7 @@ const FeatureSection = styled.div(
   })
 );
 
-const Features = (props: IBeneficios) => {
+const Features = (props: IHomePage) => {
   const theme = useTheme();
   const [mobileSize, tabletSize] = useTableOrMobile();
 

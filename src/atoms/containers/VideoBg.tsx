@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
-import React, { ReactElement, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { webSizes } from "../../constants";
 import { useTheme } from "@emotion/react";
-import { useAPIURL } from "../../hooks";
-import { Props } from "@mdx-js/react/lib";
 
 const Banner = styled.div(() => ({
   maxWidth: webSizes.maxWidth,
@@ -55,7 +53,7 @@ const VideoBg = (props: IVideos) => {
             type="video/mp4"
           />
         </video>
-        <ContainerOverlay bgColor={theme.siManejoPrimary.main} />
+        <ContainerOverlay bgColor={theme.backGroundColors.dark} />
       </div>
       <Banner>{props.children}</Banner>
     </>

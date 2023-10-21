@@ -11,7 +11,7 @@ const theme = createTheme({
   },
   siManejoPrimary: {
     main: "rgb(26, 56, 99)",
-    light: "rgb(37, 79, 139)",
+    light: "rgb(22, 57, 100)",
   },
   siManejoSecondary: {
     main: "rgb(203, 22, 27)",
@@ -24,10 +24,10 @@ const theme = createTheme({
   grayScale: {
     dark: "rgb(129, 133, 137)",
     main: "rgb(192, 192, 192)",
-    light: "rgb(211, 211, 211)",
+    light: "rgb(242, 237, 237)",
   },
   backGroundColors: {
-    dark: '',
+    dark: '#1a2e42',
     main: '#F5F5F5',
     light: '#f8f9fc',
   },

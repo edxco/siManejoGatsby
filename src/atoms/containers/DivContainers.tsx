@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { Link, LinkProps } from "@mui/material";
+import { ReactNode } from "react";
 
 export const FlexContainerCenter = styled.div(
   ({
@@ -33,3 +35,17 @@ export const FlexContainerCenter = styled.div(
     margin: margin ? margin : 0,
   })
 );
+
+interface ICustomLink extends LinkProps {
+  hoverColor: string;
+  hoverUnderline?: boolean;
+}
+
+export const CustomLink = styled(Link)((props: ICustomLink) => ({
+  transitionProperty: 'color',
+  transitionDuration: '0.5s',
+  ":hover": {
+    color: props.hoverColor,
+    textDecoration: props.hoverUnderline ? "underline" : "none",
+  },
+}));

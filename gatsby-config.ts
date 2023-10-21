@@ -19,10 +19,13 @@ const strapiConfig = {
           beneficios: {
             populate: "*",
           },
+          paymentOption: {
+            populate: "*",
+          },
           categories: "*",
         },
       },
-    }, `cta-banner`
+    }, `cta-banner`, `footer`
   ],
   // remoteFileHeaders: {
   //   /**

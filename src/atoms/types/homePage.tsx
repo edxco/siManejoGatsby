@@ -4,8 +4,14 @@ export interface IBeneficio {
   icono: any;
 }
 
-export interface IBeneficios {
-  beneficios: Array<IBeneficio>;
+export interface IPaymentMethod {
+  payment: string;
+  image: any;
+}
+
+export interface IHomePage {
+  beneficios?: Array<IBeneficio>;
+  paymentOption?: Array<IPaymentMethod>;
 }
 
 export interface ICtaBanner {
@@ -15,7 +21,7 @@ export interface ICtaBanner {
 }
 
 export interface IStrapiInicio {
-  strapiInicio: IBeneficios;
+  strapiInicio: IHomePage;
 }
 
 export interface IStrapiCtaBanner {

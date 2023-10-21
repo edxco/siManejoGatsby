@@ -1455,12 +1455,15 @@ type Query = {
   readonly allStrapiComponentCaracteristicasCaracteristicas: STRAPI__COMPONENT_CARACTERISTICAS_CARACTERISTICASConnection;
   readonly allStrapiComponentCursosCursos: STRAPI__COMPONENT_CURSOS_CURSOSConnection;
   readonly allStrapiComponentDireccionDireccion: STRAPI__COMPONENT_DIRECCION_DIRECCIONConnection;
+  readonly allStrapiComponentFooterLinksFooterLinks: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSConnection;
   readonly allStrapiComponentHighlightHighlight: STRAPI__COMPONENT_HIGHLIGHT_HIGHLIGHTConnection;
   readonly allStrapiComponentHorarioHorario: STRAPI__COMPONENT_HORARIO_HORARIOConnection;
   readonly allStrapiComponentNumerosContactoNumerosContacto: STRAPI__COMPONENT_NUMEROS_CONTACTO_NUMEROS_CONTACTOConnection;
+  readonly allStrapiComponentOpcionesPagoOpcionesPago: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection;
   readonly allStrapiCtaBanner: STRAPI_CTA_BANNERConnection;
   readonly allStrapiEscuela: STRAPI_ESCUELAConnection;
   readonly allStrapiEscuelaDescripcionTextnode: STRAPI_ESCUELA_DESCRIPCION_TEXTNODEConnection;
+  readonly allStrapiFooter: STRAPI_FOOTERConnection;
   readonly allStrapiInicio: STRAPI_INICIOConnection;
   readonly allStrapiMedia: STRAPI__MEDIAConnection;
   readonly directory: Maybe<Directory>;
@@ -1478,12 +1481,15 @@ type Query = {
   readonly strapiComponentCaracteristicasCaracteristicas: Maybe<STRAPI__COMPONENT_CARACTERISTICAS_CARACTERISTICAS>;
   readonly strapiComponentCursosCursos: Maybe<STRAPI__COMPONENT_CURSOS_CURSOS>;
   readonly strapiComponentDireccionDireccion: Maybe<STRAPI__COMPONENT_DIRECCION_DIRECCION>;
+  readonly strapiComponentFooterLinksFooterLinks: Maybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS>;
   readonly strapiComponentHighlightHighlight: Maybe<STRAPI__COMPONENT_HIGHLIGHT_HIGHLIGHT>;
   readonly strapiComponentHorarioHorario: Maybe<STRAPI__COMPONENT_HORARIO_HORARIO>;
   readonly strapiComponentNumerosContactoNumerosContacto: Maybe<STRAPI__COMPONENT_NUMEROS_CONTACTO_NUMEROS_CONTACTO>;
+  readonly strapiComponentOpcionesPagoOpcionesPago: Maybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
   readonly strapiCtaBanner: Maybe<STRAPI_CTA_BANNER>;
   readonly strapiEscuela: Maybe<STRAPI_ESCUELA>;
   readonly strapiEscuelaDescripcionTextnode: Maybe<STRAPI_ESCUELA_DESCRIPCION_TEXTNODE>;
+  readonly strapiFooter: Maybe<STRAPI_FOOTER>;
   readonly strapiInicio: Maybe<STRAPI_INICIO>;
   readonly strapiMedia: Maybe<STRAPI__MEDIA>;
 };
@@ -1609,6 +1615,14 @@ type Query_allStrapiComponentDireccionDireccionArgs = {
 };
 
 
+type Query_allStrapiComponentFooterLinksFooterLinksArgs = {
+  filter: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSSortInput>>>;
+};
+
+
 type Query_allStrapiComponentHighlightHighlightArgs = {
   filter: InputMaybe<STRAPI__COMPONENT_HIGHLIGHT_HIGHLIGHTFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
@@ -1633,6 +1647,14 @@ type Query_allStrapiComponentNumerosContactoNumerosContactoArgs = {
 };
 
 
+type Query_allStrapiComponentOpcionesPagoOpcionesPagoArgs = {
+  filter: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOSortInput>>>;
+};
+
+
 type Query_allStrapiCtaBannerArgs = {
   filter: InputMaybe<STRAPI_CTA_BANNERFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
@@ -1654,6 +1676,14 @@ type Query_allStrapiEscuelaDescripcionTextnodeArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI_ESCUELA_DESCRIPCION_TEXTNODESortInput>>>;
+};
+
+
+type Query_allStrapiFooterArgs = {
+  filter: InputMaybe<STRAPI_FOOTERFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<STRAPI_FOOTERSortInput>>>;
 };
 
 
@@ -1927,6 +1957,17 @@ type Query_strapiComponentDireccionDireccionArgs = {
 };
 
 
+type Query_strapiComponentFooterLinksFooterLinksArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  section: InputMaybe<StringQueryOperatorInput>;
+  slug: InputMaybe<StringQueryOperatorInput>;
+  strapi_id: InputMaybe<IntQueryOperatorInput>;
+};
+
+
 type Query_strapiComponentHighlightHighlightArgs = {
   children: InputMaybe<NodeFilterListInput>;
   icono: InputMaybe<STRAPI__MEDIAFilterInput>;
@@ -1956,6 +1997,17 @@ type Query_strapiComponentNumerosContactoNumerosContactoArgs = {
   strapi_id: InputMaybe<IntQueryOperatorInput>;
   telefono: InputMaybe<StringQueryOperatorInput>;
   whatsapp: InputMaybe<StringQueryOperatorInput>;
+};
+
+
+type Query_strapiComponentOpcionesPagoOpcionesPagoArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  image: InputMaybe<STRAPI__MEDIAFilterInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  payment: InputMaybe<StringQueryOperatorInput>;
+  strapi_id: InputMaybe<IntQueryOperatorInput>;
 };
 
 
@@ -2007,6 +2059,20 @@ type Query_strapiEscuelaDescripcionTextnodeArgs = {
 };
 
 
+type Query_strapiFooterArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  createdAt: InputMaybe<DateQueryOperatorInput>;
+  description: InputMaybe<StringQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  link: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFilterListInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  publishedAt: InputMaybe<DateQueryOperatorInput>;
+  strapi_id: InputMaybe<IntQueryOperatorInput>;
+  updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+
 type Query_strapiInicioArgs = {
   beneficios: InputMaybe<STRAPI__COMPONENT_HIGHLIGHT_HIGHLIGHTFilterListInput>;
   children: InputMaybe<NodeFilterListInput>;
@@ -2014,6 +2080,7 @@ type Query_strapiInicioArgs = {
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
+  paymentOption: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterListInput>;
   publishedAt: InputMaybe<DateQueryOperatorInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
   updatedAt: InputMaybe<DateQueryOperatorInput>;
@@ -3017,6 +3084,168 @@ type STRAPI_ESCUELA_DESCRIPCION_TEXTNODESortInput = {
   readonly parent: InputMaybe<NodeSortInput>;
 };
 
+type STRAPI_FOOTER = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly createdAt: Maybe<Scalars['Date']>;
+  readonly description: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly link: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS>>>;
+  readonly parent: Maybe<Node>;
+  readonly publishedAt: Maybe<Scalars['Date']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+  readonly updatedAt: Maybe<Scalars['Date']>;
+};
+
+
+type STRAPI_FOOTER_createdAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_FOOTER_publishedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+type STRAPI_FOOTER_updatedAtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type STRAPI_FOOTERConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI_FOOTEREdge>;
+  readonly group: ReadonlyArray<STRAPI_FOOTERGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI_FOOTER>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI_FOOTERConnection_distinctArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+};
+
+
+type STRAPI_FOOTERConnection_groupArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI_FOOTERConnection_maxArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+};
+
+
+type STRAPI_FOOTERConnection_minArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+};
+
+
+type STRAPI_FOOTERConnection_sumArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+};
+
+type STRAPI_FOOTEREdge = {
+  readonly next: Maybe<STRAPI_FOOTER>;
+  readonly node: STRAPI_FOOTER;
+  readonly previous: Maybe<STRAPI_FOOTER>;
+};
+
+type STRAPI_FOOTERFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly createdAt: InputMaybe<FieldSelectorEnum>;
+  readonly description: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly link: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly publishedAt: InputMaybe<FieldSelectorEnum>;
+  readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+  readonly updatedAt: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI_FOOTERFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly createdAt: InputMaybe<DateQueryOperatorInput>;
+  readonly description: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly link: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFilterListInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly publishedAt: InputMaybe<DateQueryOperatorInput>;
+  readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+  readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
+};
+
+type STRAPI_FOOTERGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI_FOOTEREdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<STRAPI_FOOTERGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI_FOOTER>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI_FOOTERGroupConnection_distinctArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+};
+
+
+type STRAPI_FOOTERGroupConnection_groupArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI_FOOTERGroupConnection_maxArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+};
+
+
+type STRAPI_FOOTERGroupConnection_minArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+};
+
+
+type STRAPI_FOOTERGroupConnection_sumArgs = {
+  field: STRAPI_FOOTERFieldSelector;
+};
+
+type STRAPI_FOOTERSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly createdAt: InputMaybe<SortOrderEnum>;
+  readonly description: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly link: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly publishedAt: InputMaybe<SortOrderEnum>;
+  readonly strapi_id: InputMaybe<SortOrderEnum>;
+  readonly updatedAt: InputMaybe<SortOrderEnum>;
+};
+
 type STRAPI_INICIO = Node & {
   readonly beneficios: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_HIGHLIGHT_HIGHLIGHT>>>;
   readonly children: ReadonlyArray<Node>;
@@ -3024,6 +3253,7 @@ type STRAPI_INICIO = Node & {
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
+  readonly paymentOption: Maybe<ReadonlyArray<Maybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>>>;
   readonly publishedAt: Maybe<Scalars['Date']>;
   readonly strapi_id: Maybe<Scalars['Int']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
@@ -3105,6 +3335,7 @@ type STRAPI_INICIOFieldSelector = {
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly paymentOption: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector>;
   readonly publishedAt: InputMaybe<FieldSelectorEnum>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
   readonly updatedAt: InputMaybe<FieldSelectorEnum>;
@@ -3117,6 +3348,7 @@ type STRAPI_INICIOFilterInput = {
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
+  readonly paymentOption: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterListInput>;
   readonly publishedAt: InputMaybe<DateQueryOperatorInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
   readonly updatedAt: InputMaybe<DateQueryOperatorInput>;
@@ -3170,6 +3402,7 @@ type STRAPI_INICIOSortInput = {
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
+  readonly paymentOption: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOSortInput>;
   readonly publishedAt: InputMaybe<SortOrderEnum>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;
   readonly updatedAt: InputMaybe<SortOrderEnum>;
@@ -3557,6 +3790,136 @@ type STRAPI__COMPONENT_DIRECCION_DIRECCIONSortInput = {
   readonly strapi_id: InputMaybe<SortOrderEnum>;
 };
 
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly parent: Maybe<Node>;
+  readonly section: Maybe<Scalars['String']>;
+  readonly slug: Maybe<Scalars['String']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSEdge>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSConnection_groupArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSConnection_maxArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSConnection_minArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSConnection_sumArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+};
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSEdge = {
+  readonly next: Maybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS>;
+  readonly node: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS;
+  readonly previous: Maybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS>;
+};
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly section: InputMaybe<FieldSelectorEnum>;
+  readonly slug: InputMaybe<FieldSelectorEnum>;
+  readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly section: InputMaybe<StringQueryOperatorInput>;
+  readonly slug: InputMaybe<StringQueryOperatorInput>;
+  readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFilterInput>;
+};
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKS>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSGroupConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSGroupConnection_groupArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSGroupConnection_maxArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSGroupConnection_minArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSGroupConnection_sumArgs = {
+  field: STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSFieldSelector;
+};
+
+type STRAPI__COMPONENT_FOOTER_LINKS_FOOTER_LINKSSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly section: InputMaybe<SortOrderEnum>;
+  readonly slug: InputMaybe<SortOrderEnum>;
+  readonly strapi_id: InputMaybe<SortOrderEnum>;
+};
+
 type STRAPI__COMPONENT_HIGHLIGHT_HIGHLIGHT = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly icono: Maybe<STRAPI__MEDIA>;
@@ -3937,6 +4300,136 @@ type STRAPI__COMPONENT_NUMEROS_CONTACTO_NUMEROS_CONTACTOSortInput = {
   readonly strapi_id: InputMaybe<SortOrderEnum>;
   readonly telefono: InputMaybe<SortOrderEnum>;
   readonly whatsapp: InputMaybe<SortOrderEnum>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly id: Scalars['ID'];
+  readonly image: Maybe<STRAPI__MEDIA>;
+  readonly internal: Internal;
+  readonly parent: Maybe<Node>;
+  readonly payment: Maybe<Scalars['String']>;
+  readonly strapi_id: Maybe<Scalars['Int']>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOEdge>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_groupArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_maxArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_minArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOConnection_sumArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOEdge = {
+  readonly next: Maybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
+  readonly node: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO;
+  readonly previous: Maybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly image: InputMaybe<STRAPI__MEDIAFieldSelector>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+  readonly payment: InputMaybe<FieldSelectorEnum>;
+  readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly image: InputMaybe<STRAPI__MEDIAFilterInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly payment: InputMaybe<StringQueryOperatorInput>;
+  readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterListInput = {
+  readonly elemMatch: InputMaybe<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFilterInput>;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGO>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_distinctArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_groupArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_maxArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_minArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOGroupConnection_sumArgs = {
+  field: STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOFieldSelector;
+};
+
+type STRAPI__COMPONENT_OPCIONES_PAGO_OPCIONES_PAGOSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly image: InputMaybe<STRAPI__MEDIASortInput>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly parent: InputMaybe<NodeSortInput>;
+  readonly payment: InputMaybe<SortOrderEnum>;
+  readonly strapi_id: InputMaybe<SortOrderEnum>;
 };
 
 type STRAPI__MEDIA = Node & {

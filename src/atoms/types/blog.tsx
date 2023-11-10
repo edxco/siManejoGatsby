@@ -3,7 +3,7 @@ export interface IBlog {
   resumen: string;
   titulo: string;
   media: any;
-  slog: string;
+  slug: string;
   blog_categoria: { categoria: string };
 }
 

@@ -60,6 +60,8 @@ const BlogHomePage = (props: IAllStrapiBlogNodes) => {
           autoPlay={mobileSize ? true : false}
         >
           {props.nodes.map((blog) => {
+            console.log(API_URL, ' + ', blog.titulo,'\nblog media', blog.media.localFile.childImageSharp.gatsbyImageData.images
+            .fallback.src, '\n\n')
             return (
               <CardWithImage
                 image={

@@ -11,7 +11,7 @@ import {
 import { IEscuelas, IHomePage, ICtaBanner } from "../atoms/types";
 import { IAllStrapiBlogNodes } from "../atoms/types/blog";
 
-export const query = graphql`
+export const querySchool = graphql`
   query {
     allStrapiEscuela {
       edges {

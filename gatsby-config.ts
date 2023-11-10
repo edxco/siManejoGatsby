@@ -8,7 +8,33 @@ const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   // fromURL: process.env.FROM_URL === "true",
   accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: ["escuela", "blog"],
+  collectionTypes: [{
+    singularName: "escuela",
+    queryParams: {
+      populate: {
+        bgBoton: "*",
+        direccion: {
+          populate: "*",
+        },
+        horarios: {
+          populate: "*",
+        },
+        numerosContacto: {
+          populate: "*",
+        },
+        cursos: {
+          populate: "*",
+        },
+        caracteristicas: {
+          populate: "*",
+        },
+        schoolbanner: {
+          populate: "*",
+        },
+        categories: "*",
+      },
+    },
+  }, "blog"],
   singleTypes: [
     {
       singularName: "inicio",

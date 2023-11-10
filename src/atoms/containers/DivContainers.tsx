@@ -49,3 +49,8 @@ export const CustomLink = styled(Link)((props: ICustomLink) => ({
     textDecoration: props.hoverUnderline ? "underline" : "none",
   },
 }));
+
+export const BaseCenterContainer = styled.div(() => ({
+  display: 'flex',
+  justifyContent: 'center',
+}));

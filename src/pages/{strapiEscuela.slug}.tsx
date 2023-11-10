@@ -1,11 +1,23 @@
 import React from "react";
-import { graphql, PageProps, useStaticQuery } from "gatsby";
-import { Ciudades } from "../components";
+import { graphql, PageProps } from "gatsby";
+import Carousel from "react-multi-carousel";
+import {
+  FlexContainerCenter,
+  TitleAndSubtitle,
+  CardWithImage,
+  BaseCenterContainer,
+} from "../atoms";
+import styled from "@emotion/styled";
+import { webSizes } from "../constants";
+import { useAPIURL, useTableOrMobile } from "../hooks";
+import { ImageSlider } from "../components";
+import { IEscuelas } from "../atoms/types";
+import { IAllStrapiBlogNodes } from "../atoms/types/blog";
 
 //Query
 export const CityPageQuery = graphql`
   query ($slug: String) {
-    allStrapiEscuela(filter: {slug: {eq: $slug}}) {
+    allStrapiEscuela(filter: { slug: { eq: $slug } }) {
       edges {
         node {
           id
@@ -36,6 +48,19 @@ export const CityPageQuery = graphql`
             id
             telefono
           }
+          schoolbanner {
+            bottomTitle
+            strapi_id
+            title
+            topTitle
+            bgImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(layout: FULL_WIDTH)
+                }
+              }
+            }
+          }
           sucursal
           titulo
           terminosCondiciones
@@ -45,10 +70,25 @@ export const CityPageQuery = graphql`
   }
 `;
 
-const CityPage: React.FC<PageProps> = ({data}) => {
-//   const data = useStaticQuery<any>(CityPageQuery);
-  console.log(data)
-  return <>Hola! {data.allStrapiEscuela.edges[0].node.sucursal}</>;
+interface ISchoolSingle {
+  allStrapiEscuela: IEscuelas;
+  allStrapiBlog: IAllStrapiBlogNodes;
+}
+
+const CityPage = ({ data }: { data: ISchoolSingle }) => {
+  //   const data = useStaticQuery<any>(CityPageQuery);
+  console.log("====", data);
+
+  const currentData = data.allStrapiEscuela.edges[0].node;
+
+  return (
+    <div style={{ width: "100%", margin: 0, padding: 0 }}>
+      <ImageSlider
+        title={currentData.sucursal}
+        schoolbanner={currentData.schoolbanner}
+      />
+    </div>
+  );
 };
 
 export default CityPage;

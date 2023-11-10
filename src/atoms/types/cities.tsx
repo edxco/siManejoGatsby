@@ -18,6 +18,14 @@ export interface INumerosContacto {
   whatsapp: string;
 }
 
+export interface ISchoolBanner {
+  bottomTitle: string;
+  strapi_id: string;
+  title: string;
+  topTitle: string;
+  bgImage: IImageDefault;
+}
+
 export interface IEscuela {
   id: string;
   slug: string;
@@ -48,4 +56,5 @@ export interface IEscuela {
   sucursal: string;
   titulo: string;
   terminosCondiciones: string;
+  schoolbanner: Array<ISchoolBanner>;
 }

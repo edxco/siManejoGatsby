@@ -47,6 +47,18 @@ export interface IDrivingLessons {
   detalleCurso: Array<IDrivingLessonsProps>;
 }
 
+export interface ILessonsBenefitsDetails {
+  strapi_id: string;
+  descripcion: string;
+  titulo: string;
+  imagen: IImageDefault;
+}
+
+export interface ILessonsBenefits {
+  titulo: string;
+  caracteristicaDetalle: Array<ILessonsBenefitsDetails>;
+}
+
 export interface IEscuela {
   id: string;
   slug: string;
@@ -60,6 +72,7 @@ export interface IEscuela {
     linea2: string;
     strapi_id: number;
   };
+  caracteristicas: ILessonsBenefits;
   cursos: IDrivingLessons;
   descripcion: {
     data: {

@@ -17,6 +17,7 @@ interface IPriceTableProps {
   lessons: Array<IDrivingLessonsProps>;
   title: string;
   description: string;
+  conditions: string;
 }
 
 interface IContainersProps {
@@ -219,9 +220,16 @@ const PriceTable = (props: IPriceTableProps) => {
                       lesson.mostPopular ? theme.siManejoPrimary.main : "white"
                     }
                     align="center"
-                    sx={{ pt: 1, pb: 1 }}
+                    sx={{
+                      pt: 1,
+                      pb: 1,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "flex-start",
+                    }}
                   >
                     {priceFormat(lesson.costo)}
+                    <span style={{ fontSize: "20px" }}>*</span>
                   </Typography>
                 </div>
                 <DescriptionContainer>
@@ -297,6 +305,15 @@ const PriceTable = (props: IPriceTableProps) => {
             </CardPrice>
           );
         })}
+        <Typography
+          variant="body2"
+          component="div"
+          fontWeight={400}
+          color={theme.siManejoTertiary.main}
+          align="center"
+        >
+          {props.conditions}
+        </Typography>
       </CardsContainer>
     </div>
   );

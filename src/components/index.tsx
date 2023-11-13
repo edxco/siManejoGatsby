@@ -10,5 +10,6 @@ export { default as InfoSchoolSection } from "./InfoSchool";
 export { default as CallUsBanner } from "./CallUsBanner";
 export { default as PriceTable } from "./PriceTable";
 export { default as LessonsBenefits } from './LessonsBenefits';
+export { default as GoogleMapsCustom } from './GoogleMapsCustom';
 
 export { default as Footer } from "./Footer";

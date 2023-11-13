@@ -1239,138 +1239,6 @@ type JSONQueryOperatorInput = {
   readonly regex: InputMaybe<Scalars['JSON']>;
 };
 
-type Mdx = Node & {
-  readonly children: ReadonlyArray<Node>;
-  readonly excerpt: Maybe<Scalars['String']>;
-  readonly id: Scalars['ID'];
-  readonly internal: Internal;
-  readonly parent: Maybe<Node>;
-  readonly tableOfContents: Maybe<Scalars['JSON']>;
-};
-
-
-type Mdx_excerptArgs = {
-  pruneLength?: InputMaybe<Scalars['Int']>;
-};
-
-
-type Mdx_tableOfContentsArgs = {
-  maxDepth: InputMaybe<Scalars['Int']>;
-};
-
-type MdxConnection = {
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly edges: ReadonlyArray<MdxEdge>;
-  readonly group: ReadonlyArray<MdxGroupConnection>;
-  readonly max: Maybe<Scalars['Float']>;
-  readonly min: Maybe<Scalars['Float']>;
-  readonly nodes: ReadonlyArray<Mdx>;
-  readonly pageInfo: PageInfo;
-  readonly sum: Maybe<Scalars['Float']>;
-  readonly totalCount: Scalars['Int'];
-};
-
-
-type MdxConnection_distinctArgs = {
-  field: MdxFieldSelector;
-};
-
-
-type MdxConnection_groupArgs = {
-  field: MdxFieldSelector;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-};
-
-
-type MdxConnection_maxArgs = {
-  field: MdxFieldSelector;
-};
-
-
-type MdxConnection_minArgs = {
-  field: MdxFieldSelector;
-};
-
-
-type MdxConnection_sumArgs = {
-  field: MdxFieldSelector;
-};
-
-type MdxEdge = {
-  readonly next: Maybe<Mdx>;
-  readonly node: Mdx;
-  readonly previous: Maybe<Mdx>;
-};
-
-type MdxFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly excerpt: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly tableOfContents: InputMaybe<FieldSelectorEnum>;
-};
-
-type MdxFilterInput = {
-  readonly children: InputMaybe<NodeFilterListInput>;
-  readonly excerpt: InputMaybe<StringQueryOperatorInput>;
-  readonly id: InputMaybe<StringQueryOperatorInput>;
-  readonly internal: InputMaybe<InternalFilterInput>;
-  readonly parent: InputMaybe<NodeFilterInput>;
-  readonly tableOfContents: InputMaybe<JSONQueryOperatorInput>;
-};
-
-type MdxGroupConnection = {
-  readonly distinct: ReadonlyArray<Scalars['String']>;
-  readonly edges: ReadonlyArray<MdxEdge>;
-  readonly field: Scalars['String'];
-  readonly fieldValue: Maybe<Scalars['String']>;
-  readonly group: ReadonlyArray<MdxGroupConnection>;
-  readonly max: Maybe<Scalars['Float']>;
-  readonly min: Maybe<Scalars['Float']>;
-  readonly nodes: ReadonlyArray<Mdx>;
-  readonly pageInfo: PageInfo;
-  readonly sum: Maybe<Scalars['Float']>;
-  readonly totalCount: Scalars['Int'];
-};
-
-
-type MdxGroupConnection_distinctArgs = {
-  field: MdxFieldSelector;
-};
-
-
-type MdxGroupConnection_groupArgs = {
-  field: MdxFieldSelector;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-};
-
-
-type MdxGroupConnection_maxArgs = {
-  field: MdxFieldSelector;
-};
-
-
-type MdxGroupConnection_minArgs = {
-  field: MdxFieldSelector;
-};
-
-
-type MdxGroupConnection_sumArgs = {
-  field: MdxFieldSelector;
-};
-
-type MdxSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly excerpt: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly tableOfContents: InputMaybe<SortOrderEnum>;
-};
-
 /** Node Interface */
 type Node = {
   readonly children: ReadonlyArray<Node>;
@@ -1443,7 +1311,6 @@ type Query = {
   readonly allDirectory: DirectoryConnection;
   readonly allFile: FileConnection;
   readonly allImageSharp: ImageSharpConnection;
-  readonly allMdx: MdxConnection;
   readonly allSite: SiteConnection;
   readonly allSiteBuildMetadata: SiteBuildMetadataConnection;
   readonly allSiteFunction: SiteFunctionConnection;
@@ -1472,7 +1339,6 @@ type Query = {
   readonly directory: Maybe<Directory>;
   readonly file: Maybe<File>;
   readonly imageSharp: Maybe<ImageSharp>;
-  readonly mdx: Maybe<Mdx>;
   readonly site: Maybe<Site>;
   readonly siteBuildMetadata: Maybe<SiteBuildMetadata>;
   readonly siteFunction: Maybe<SiteFunction>;
@@ -1522,14 +1388,6 @@ type Query_allImageSharpArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<ImageSharpSortInput>>>;
-};
-
-
-type Query_allMdxArgs = {
-  filter: InputMaybe<MdxFilterInput>;
-  limit: InputMaybe<Scalars['Int']>;
-  skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<MdxSortInput>>>;
 };
 
 
@@ -1830,16 +1688,6 @@ type Query_imageSharpArgs = {
 };
 
 
-type Query_mdxArgs = {
-  children: InputMaybe<NodeFilterListInput>;
-  excerpt: InputMaybe<StringQueryOperatorInput>;
-  id: InputMaybe<StringQueryOperatorInput>;
-  internal: InputMaybe<InternalFilterInput>;
-  parent: InputMaybe<NodeFilterInput>;
-  tableOfContents: InputMaybe<JSONQueryOperatorInput>;
-};
-
-
 type Query_siteArgs = {
   buildTime: InputMaybe<DateQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
@@ -1957,9 +1805,11 @@ type Query_strapiComponentCaracteristicaDetalleCaracteristicaDetalleArgs = {
   children: InputMaybe<NodeFilterListInput>;
   descripcion: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
+  imagen: InputMaybe<STRAPI__MEDIAFilterInput>;
   internal: InputMaybe<InternalFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
+  test: InputMaybe<StringQueryOperatorInput>;
   titulo: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -1995,6 +1845,7 @@ type Query_strapiComponentDetalleCursoDetalleCursoArgs = {
   horas: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  mostPopular: InputMaybe<BooleanQueryOperatorInput>;
   nombre: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
@@ -3613,9 +3464,11 @@ type STRAPI__COMPONENT_CARACTERISTICA_DETALLE_CARACTERISTICA_DETALLE = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly descripcion: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
+  readonly imagen: Maybe<STRAPI__MEDIA>;
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
   readonly strapi_id: Maybe<Scalars['Int']>;
+  readonly test: Maybe<Scalars['String']>;
   readonly titulo: Maybe<Scalars['String']>;
 };
 
@@ -3668,9 +3521,11 @@ type STRAPI__COMPONENT_CARACTERISTICA_DETALLE_CARACTERISTICA_DETALLEFieldSelecto
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly descripcion: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly imagen: InputMaybe<STRAPI__MEDIAFieldSelector>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+  readonly test: InputMaybe<FieldSelectorEnum>;
   readonly titulo: InputMaybe<FieldSelectorEnum>;
 };
 
@@ -3678,9 +3533,11 @@ type STRAPI__COMPONENT_CARACTERISTICA_DETALLE_CARACTERISTICA_DETALLEFilterInput 
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly descripcion: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly imagen: InputMaybe<STRAPI__MEDIAFilterInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+  readonly test: InputMaybe<StringQueryOperatorInput>;
   readonly titulo: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -3733,9 +3590,11 @@ type STRAPI__COMPONENT_CARACTERISTICA_DETALLE_CARACTERISTICA_DETALLESortInput = 
   readonly children: InputMaybe<NodeSortInput>;
   readonly descripcion: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
+  readonly imagen: InputMaybe<STRAPI__MEDIASortInput>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;
+  readonly test: InputMaybe<SortOrderEnum>;
   readonly titulo: InputMaybe<SortOrderEnum>;
 };
 
@@ -3877,6 +3736,7 @@ type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSO = Node & {
   readonly horas: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  readonly mostPopular: Maybe<Scalars['Boolean']>;
   readonly nombre: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
   readonly strapi_id: Maybe<Scalars['Int']>;
@@ -3935,6 +3795,7 @@ type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOFieldSelector = {
   readonly horas: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly mostPopular: InputMaybe<FieldSelectorEnum>;
   readonly nombre: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
@@ -3948,6 +3809,7 @@ type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOFilterInput = {
   readonly horas: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly mostPopular: InputMaybe<BooleanQueryOperatorInput>;
   readonly nombre: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
@@ -4006,6 +3868,7 @@ type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOSortInput = {
   readonly horas: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
+  readonly mostPopular: InputMaybe<SortOrderEnum>;
   readonly nombre: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;

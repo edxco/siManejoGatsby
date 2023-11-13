@@ -8,33 +8,40 @@ const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   // fromURL: process.env.FROM_URL === "true",
   accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: [{
-    singularName: "escuela",
-    queryParams: {
-      populate: {
-        bgBoton: "*",
-        direccion: {
-          populate: "*",
+  collectionTypes: [
+    {
+      singularName: "escuela",
+      queryParams: {
+        populate: {
+          bgBoton: "*",
+          direccion: {
+            populate: "*",
+          },
+          horarios: {
+            populate: "*",
+          },
+          numerosContacto: {
+            populate: "*",
+          },
+          cursos: {
+            populate: "*",
+          },
+          caracteristicas: {
+            populate: {
+              caracteristicaDetalle:{
+                populate: "*",
+              },
+            },
+          },
+          schoolbanner: {
+            populate: "*",
+          },
+          categories: "*",
         },
-        horarios: {
-          populate: "*",
-        },
-        numerosContacto: {
-          populate: "*",
-        },
-        cursos: {
-          populate: "*",
-        },
-        caracteristicas: {
-          populate: "*",
-        },
-        schoolbanner: {
-          populate: "*",
-        },
-        categories: "*",
       },
     },
-  }, "blog"],
+    "blog",
+  ],
   singleTypes: [
     {
       singularName: "inicio",
@@ -51,7 +58,9 @@ const strapiConfig = {
           categories: "*",
         },
       },
-    }, `cta-banner`, `footer`
+    },
+    `cta-banner`,
+    `footer`,
   ],
   // remoteFileHeaders: {
   //   /**

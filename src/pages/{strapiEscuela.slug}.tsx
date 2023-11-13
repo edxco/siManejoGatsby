@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import {
   CallUsBanner,
+  GoogleMapsCustom,
   ImageSlider,
   InfoSchoolSection,
   LessonsBenefits,
@@ -41,6 +42,21 @@ export const CityPageQuery = graphql`
               descripcion
               id
               mostPopular
+            }
+          }
+          caracteristicas {
+            titulo
+            caracteristicaDetalle {
+              strapi_id
+              descripcion
+              titulo
+              imagen {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(layout: FULL_WIDTH)
+                  }
+                }
+              }
             }
           }
           descripcion {
@@ -99,8 +115,19 @@ const CityPage = ({ data }: { data: ISchoolSingle }) => {
         openHours={currentData.horarios}
         city={currentData.sucursal}
       />
-      <PriceTable lessons={currentData.cursos.detalleCurso} title={currentData.cursos.titulo} description={currentData.cursos.descripcion} />
-      <LessonsBenefits />
+      <PriceTable
+        lessons={currentData.cursos.detalleCurso}
+        title={currentData.cursos.titulo}
+        description={currentData.cursos.descripcion}
+        conditions={currentData.terminosCondiciones}
+      />
+      <LessonsBenefits
+        titulo={currentData.caracteristicas.titulo}
+        caracteristicaDetalle={
+          currentData.caracteristicas.caracteristicaDetalle
+        }
+      />
+      <GoogleMapsCustom />
     </div>
   );
 };

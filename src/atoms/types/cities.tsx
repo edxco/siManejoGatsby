@@ -12,7 +12,7 @@ export interface IAllStrapiEscuela {
   allStrapiEscuela: IEscuelas;
 }
 
-export interface INumerosContacto {
+export interface IContactNumbers {
   id: string;
   telefono: string;
   whatsapp: string;
@@ -26,14 +26,32 @@ export interface ISchoolBanner {
   bgImage: IImageDefault;
 }
 
+export interface IOpenHours {
+  id: string;
+  diaHora: string;
+}
+
+export interface IDrivingLessonsProps {
+  nombre: string;
+  horas: number;
+  dias: string;
+  costo: number;
+  descripcion: string;
+  id: string;
+  mostPopular: boolean;
+}
+
+export interface IDrivingLessons {
+  descripcion: string;
+  titulo: string;
+  detalleCurso: Array<IDrivingLessonsProps>;
+}
+
 export interface IEscuela {
   id: string;
   slug: string;
   bgBoton: IImageDefault;
-  horarios: {
-    id: string;
-    diaHora: string;
-  };
+  horarios: Array<IOpenHours>;
   direccion: {
     id: string;
     ciudad: string;
@@ -42,17 +60,14 @@ export interface IEscuela {
     linea2: string;
     strapi_id: number;
   };
-  cursos: {
-    descripcion: string;
-    id: string;
-  };
+  cursos: IDrivingLessons;
   descripcion: {
     data: {
       descripcion: string;
       id: string;
     };
   };
-  numerosContacto: INumerosContacto;
+  numerosContacto: IContactNumbers;
   sucursal: string;
   titulo: string;
   terminosCondiciones: string;

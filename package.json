@@ -20,7 +20,6 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/inter": "^5.0.12",
     "@googleapis/mybusinessaccountmanagement": "^3.0.8",
-    "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.4",
     "@mui/styled-engine": "^5.13.2",
@@ -31,11 +30,9 @@
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-layout": "^4.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
-    "gatsby-plugin-mdx": "^5.11.0",
     "gatsby-plugin-react-svg": "^3.3.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-plugin-sitemap": "^6.11.0",
-    "gatsby-source-filesystem": "^5.11.0",
     "gatsby-source-strapi": "^3.3.0",
     "gatsby-transformer-remark": "^6.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
@@ -44,7 +41,8 @@
     "react-dom": "^18.2.0",
     "react-multi-carousel": "^2.8.4",
     "react-responsive": "^9.0.2",
-    "react-text-transition": "^3.1.0"
+    "react-text-transition": "^3.1.0",
+    "resend": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.2.6",

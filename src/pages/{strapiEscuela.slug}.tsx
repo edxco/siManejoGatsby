@@ -1,16 +1,12 @@
 import React from "react";
-import { graphql, PageProps } from "gatsby";
-import Carousel from "react-multi-carousel";
+import { graphql } from "gatsby";
 import {
-  FlexContainerCenter,
-  TitleAndSubtitle,
-  CardWithImage,
-  BaseCenterContainer,
-} from "../atoms";
-import styled from "@emotion/styled";
-import { webSizes } from "../constants";
-import { useAPIURL, useTableOrMobile } from "../hooks";
-import { ImageSlider } from "../components";
+  CallUsBanner,
+  ImageSlider,
+  InfoSchoolSection,
+  LessonsBenefits,
+  PriceTable,
+} from "../components";
 import { IEscuelas } from "../atoms/types";
 import { IAllStrapiBlogNodes } from "../atoms/types/blog";
 
@@ -36,7 +32,16 @@ export const CityPageQuery = graphql`
           }
           cursos {
             descripcion
-            id
+            titulo
+            detalleCurso {
+              nombre
+              horas
+              dias
+              costo
+              descripcion
+              id
+              mostPopular
+            }
           }
           descripcion {
             data {
@@ -47,6 +52,7 @@ export const CityPageQuery = graphql`
           numerosContacto {
             id
             telefono
+            whatsapp
           }
           schoolbanner {
             bottomTitle
@@ -76,17 +82,25 @@ interface ISchoolSingle {
 }
 
 const CityPage = ({ data }: { data: ISchoolSingle }) => {
-  //   const data = useStaticQuery<any>(CityPageQuery);
   console.log("====", data);
 
   const currentData = data.allStrapiEscuela.edges[0].node;
 
   return (
     <div style={{ width: "100%", margin: 0, padding: 0 }}>
-      <ImageSlider
-        title={currentData.sucursal}
-        schoolbanner={currentData.schoolbanner}
+      <ImageSlider schoolbanner={currentData.schoolbanner} />
+      <InfoSchoolSection
+        title={currentData.titulo}
+        description={currentData.descripcion.data.descripcion}
+        city={currentData.sucursal}
       />
+      <CallUsBanner
+        contactNumbers={currentData.numerosContacto}
+        openHours={currentData.horarios}
+        city={currentData.sucursal}
+      />
+      <PriceTable lessons={currentData.cursos.detalleCurso} title={currentData.cursos.titulo} description={currentData.cursos.descripcion} />
+      <LessonsBenefits />
     </div>
   );
 };

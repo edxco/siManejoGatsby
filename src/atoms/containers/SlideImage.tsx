@@ -18,7 +18,7 @@ const CarouselContainer = styled(BaseCenterContainer)(
     backgroundImage: `url(${props.bgImage})`,
     backgroundColor: "cover",
     backgroundPosition: "center",
-    height: "440px",
+    height: "380px",
     flexDirection: "column",
     alignItems: "center",
   })

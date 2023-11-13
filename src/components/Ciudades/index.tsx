@@ -109,7 +109,6 @@ const Ciudades = (props: IEscuelas) => {
               escuela.node.bgBoton.localFile.childImageSharp.gatsbyImageData
                 .images.fallback.src
             }
-            whatsapp={escuela.node.numerosContacto.whatsapp}
             mobileSize={mobileSize}
           />
         ))}

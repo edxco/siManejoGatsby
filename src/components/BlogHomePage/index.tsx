@@ -44,11 +44,12 @@ const BlogHomePage = (props: IAllStrapiBlogNodes) => {
   };
 
   return (
-    <FlexContainerCenter
-    //   bgColor={theme.grayScale.dark}
-      padding="70px 0 150px 0"
-    >
-      <TitleAndSubtitle title={"Blog Si Manejo"} subtitle="Te compartimos nuestros consejos, tips y notas para la mejor conducción" margin="0 0 30px 0"/>
+    <FlexContainerCenter padding="70px 0 150px 0">
+      <TitleAndSubtitle
+        title={"Blog Si Manejo"}
+        subtitle="Te compartimos nuestros consejos, tips y notas para la mejor conducción"
+        margin="0 0 30px 0"
+      />
       <CarouselContainer>
         <Carousel
           swipeable={true}
@@ -60,8 +61,15 @@ const BlogHomePage = (props: IAllStrapiBlogNodes) => {
           autoPlay={mobileSize ? true : false}
         >
           {props.nodes.map((blog) => {
-            console.log(API_URL, ' + ', blog.titulo,'\nblog media', blog.media.localFile.childImageSharp.gatsbyImageData.images
-            .fallback.src, '\n\n')
+            console.log(
+              API_URL,
+              " + ",
+              blog.titulo,
+              "\nblog media",
+              blog.media.localFile.childImageSharp.gatsbyImageData.images
+                .fallback.src,
+              "\n\n"
+            );
             return (
               <CardWithImage
                 image={

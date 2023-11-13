@@ -16,7 +16,7 @@ import { webSizes } from "../../constants";
 const CarouselContainer = styled.div(() => ({
   // maxWidth: webSizes.maxWidth,
   width: "100%",
-  margin: "10px auto 0 auto",
+  margin: "0 auto",
 }));
 
 const TitleContainer = styled(BaseCenterContainer)(() => ({
@@ -24,15 +24,12 @@ const TitleContainer = styled(BaseCenterContainer)(() => ({
 }));
 
 interface ISlideProps {
-  title: string;
   schoolbanner: Array<ISchoolBanner>;
 }
 
 const ImageSlider = (props: ISlideProps) => {
   const API_URL = useAPIURL();
   const [mobileSize, tabletSize] = useTableOrMobile();
-
-  console.log("props slide", props);
 
   const responsive = {
     superLargeDesktop: {
@@ -56,13 +53,6 @@ const ImageSlider = (props: ISlideProps) => {
 
   return (
     <div style={{ width: "100%", margin: 0, padding: 0 }}>
-      <TitleContainer>
-        <TitleAndSubtitle
-          title={props.title}
-          subtitle="Te compartimos nuestros consejos, tips y notas para la mejor conducción"
-          margin="0 0 30px 0"
-        />
-      </TitleContainer>
       <CarouselContainer>
         <Carousel
           swipeable={true}
@@ -70,7 +60,7 @@ const ImageSlider = (props: ISlideProps) => {
           showDots={false}
           responsive={responsive}
           infinite={true}
-          autoPlaySpeed={5500}
+          autoPlaySpeed={6500}
           autoPlay={true}
         >
           {props.schoolbanner.map((blog, index) => {

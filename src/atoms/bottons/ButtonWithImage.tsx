@@ -35,8 +35,7 @@ interface ICardEscuela {
   slug: string;
   id: string;
   title: string;
-  image: string;
-  whatsapp: string;
+  image?: string;
   mobileSize?: boolean;
 }
 
@@ -52,7 +51,7 @@ export default function ButtonWithImage(props: ICardEscuela) {
       key={props.title}
       to={`/${props.slug}`}
     >
-      <Avatar alt="Remy Sharp" src={API_URL + props.image} />
+      {props.image ? <Avatar alt="Remy Sharp" src={API_URL + props.image} /> : <></>}
       <Typography
         variant="h6"
         component="a"

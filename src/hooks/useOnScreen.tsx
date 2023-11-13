@@ -12,9 +12,11 @@ export default function useOnScreen(ref: RefObject<HTMLElement>) {
   );
 
   useEffect(() => {
-    observer.observe(ref.current);
-    return () => observer.disconnect();
+    if (ref.current !== null) {
+      observer.observe(ref.current);
+      return () => observer.disconnect();
+    }
   }, []);
 
   return isIntersecting;
-};
+}

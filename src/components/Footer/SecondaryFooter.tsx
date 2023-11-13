@@ -1,5 +1,5 @@
 import React from "react";
-import { INumerosContacto } from "../../atoms/types";
+import { IContactNumbers } from "../../atoms/types";
 import theme from "../../theme";
 import { FlexContainerCenter } from "../../atoms";
 import { webSizes } from "../../constants";
@@ -13,7 +13,7 @@ export interface ISchoolData {
     id: string;
     sucursal: string;
     slug: string;
-    numerosContacto: INumerosContacto;
+    numerosContacto: IContactNumbers;
   };
 }
 

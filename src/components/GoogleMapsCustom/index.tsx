@@ -3,7 +3,7 @@ import { Loader } from "@googlemaps/js-api-loader";
 
 const GoogleMapsCustom = () => {
   const loader = new Loader({
-    apiKey: "AIzaSyAU5-RFFZJeGqMvsgDPqij4eN_64JdF5pI",
+    apiKey: "",
     version: "weekly",
     libraries: ["places", "marker"],
   });

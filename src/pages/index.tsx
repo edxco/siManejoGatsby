@@ -19,6 +19,7 @@ export const querySchool = graphql`
           id
           slug
           bgBoton {
+            url
             localFile {
               childImageSharp {
                 gatsbyImageData(layout: FULL_WIDTH)

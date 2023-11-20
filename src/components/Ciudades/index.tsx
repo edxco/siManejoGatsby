@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useTheme } from "@mui/material";
-import { useTableOrMobile } from "../../hooks";
+import { useAPIURL, useTableOrMobile } from "../../hooks";
 import styled from "@emotion/styled";
 import TextTransition, { presets } from "react-text-transition";
 import { ButtonWithImage } from "../../atoms";
@@ -55,6 +55,7 @@ const Ciudades = (props: IEscuelas) => {
   const theme = useTheme();
   const [index, setIndex] = React.useState(0);
   const [mobileSize, tabletSize] = useTableOrMobile();
+  const API_URL = useAPIURL();
 
   const TEXTS = [
     "desde tu casa",
@@ -106,7 +107,7 @@ const Ciudades = (props: IEscuelas) => {
             title={escuela.node.sucursal}
             key={escuela.node.id}
             image={
-              escuela.node.bgBoton.localFile.childImageSharp.gatsbyImageData
+              API_URL + escuela.node.bgBoton.localFile.childImageSharp.gatsbyImageData
                 .images.fallback.src
             }
             mobileSize={mobileSize}

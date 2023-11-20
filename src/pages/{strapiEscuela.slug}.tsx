@@ -36,7 +36,8 @@ export const CityPageQuery = graphql`
             titulo
             detalleCurso {
               nombre
-              horas
+              totalHours
+              alternativeHours
               dias
               costo
               descripcion

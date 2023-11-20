@@ -33,7 +33,8 @@ export interface IOpenHours {
 
 export interface IDrivingLessonsProps {
   nombre: string;
-  horas: number;
+  totalHours: string
+  alternativeHours: string;
   dias: string;
   costo: number;
   descripcion: string;

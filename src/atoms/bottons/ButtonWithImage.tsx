@@ -42,7 +42,7 @@ interface ICardEscuela {
 export default function ButtonWithImage(props: ICardEscuela) {
   const theme = useTheme();
   const API_URL = useAPIURL();
-
+console.log('final url', props.title, '=', props.image)
   return (
     <CardContentContainer
       bgColor={theme.backGroundColors.main}

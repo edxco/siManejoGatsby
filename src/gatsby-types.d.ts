@@ -1809,7 +1809,6 @@ type Query_strapiComponentCaracteristicaDetalleCaracteristicaDetalleArgs = {
   internal: InputMaybe<InternalFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
-  test: InputMaybe<StringQueryOperatorInput>;
   titulo: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -1838,17 +1837,18 @@ type Query_strapiComponentCursosCursosArgs = {
 
 
 type Query_strapiComponentDetalleCursoDetalleCursoArgs = {
+  alternativeHours: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
   costo: InputMaybe<IntQueryOperatorInput>;
   descripcion: InputMaybe<StringQueryOperatorInput>;
   dias: InputMaybe<StringQueryOperatorInput>;
-  horas: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   mostPopular: InputMaybe<BooleanQueryOperatorInput>;
   nombre: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
   strapi_id: InputMaybe<IntQueryOperatorInput>;
+  totalHours: InputMaybe<StringQueryOperatorInput>;
 };
 
 
@@ -3468,7 +3468,6 @@ type STRAPI__COMPONENT_CARACTERISTICA_DETALLE_CARACTERISTICA_DETALLE = Node & {
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
   readonly strapi_id: Maybe<Scalars['Int']>;
-  readonly test: Maybe<Scalars['String']>;
   readonly titulo: Maybe<Scalars['String']>;
 };
 
@@ -3525,7 +3524,6 @@ type STRAPI__COMPONENT_CARACTERISTICA_DETALLE_CARACTERISTICA_DETALLEFieldSelecto
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
-  readonly test: InputMaybe<FieldSelectorEnum>;
   readonly titulo: InputMaybe<FieldSelectorEnum>;
 };
 
@@ -3537,7 +3535,6 @@ type STRAPI__COMPONENT_CARACTERISTICA_DETALLE_CARACTERISTICA_DETALLEFilterInput 
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
-  readonly test: InputMaybe<StringQueryOperatorInput>;
   readonly titulo: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -3594,7 +3591,6 @@ type STRAPI__COMPONENT_CARACTERISTICA_DETALLE_CARACTERISTICA_DETALLESortInput = 
   readonly internal: InputMaybe<InternalSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;
-  readonly test: InputMaybe<SortOrderEnum>;
   readonly titulo: InputMaybe<SortOrderEnum>;
 };
 
@@ -3729,17 +3725,18 @@ type STRAPI__COMPONENT_CURSOS_CURSOSSortInput = {
 };
 
 type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSO = Node & {
+  readonly alternativeHours: Maybe<Scalars['String']>;
   readonly children: ReadonlyArray<Node>;
   readonly costo: Maybe<Scalars['Int']>;
   readonly descripcion: Maybe<Scalars['String']>;
   readonly dias: Maybe<Scalars['String']>;
-  readonly horas: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly mostPopular: Maybe<Scalars['Boolean']>;
   readonly nombre: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
   readonly strapi_id: Maybe<Scalars['Int']>;
+  readonly totalHours: Maybe<Scalars['String']>;
 };
 
 type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOConnection = {
@@ -3788,31 +3785,33 @@ type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOEdge = {
 };
 
 type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOFieldSelector = {
+  readonly alternativeHours: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly costo: InputMaybe<FieldSelectorEnum>;
   readonly descripcion: InputMaybe<FieldSelectorEnum>;
   readonly dias: InputMaybe<FieldSelectorEnum>;
-  readonly horas: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly mostPopular: InputMaybe<FieldSelectorEnum>;
   readonly nombre: InputMaybe<FieldSelectorEnum>;
   readonly parent: InputMaybe<NodeFieldSelector>;
   readonly strapi_id: InputMaybe<FieldSelectorEnum>;
+  readonly totalHours: InputMaybe<FieldSelectorEnum>;
 };
 
 type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOFilterInput = {
+  readonly alternativeHours: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly costo: InputMaybe<IntQueryOperatorInput>;
   readonly descripcion: InputMaybe<StringQueryOperatorInput>;
   readonly dias: InputMaybe<StringQueryOperatorInput>;
-  readonly horas: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly mostPopular: InputMaybe<BooleanQueryOperatorInput>;
   readonly nombre: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly strapi_id: InputMaybe<IntQueryOperatorInput>;
+  readonly totalHours: InputMaybe<StringQueryOperatorInput>;
 };
 
 type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOFilterListInput = {
@@ -3861,17 +3860,18 @@ type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOGroupConnection_sumArgs = {
 };
 
 type STRAPI__COMPONENT_DETALLE_CURSO_DETALLE_CURSOSortInput = {
+  readonly alternativeHours: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly costo: InputMaybe<SortOrderEnum>;
   readonly descripcion: InputMaybe<SortOrderEnum>;
   readonly dias: InputMaybe<SortOrderEnum>;
-  readonly horas: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly mostPopular: InputMaybe<SortOrderEnum>;
   readonly nombre: InputMaybe<SortOrderEnum>;
   readonly parent: InputMaybe<NodeSortInput>;
   readonly strapi_id: InputMaybe<SortOrderEnum>;
+  readonly totalHours: InputMaybe<SortOrderEnum>;
 };
 
 type STRAPI__COMPONENT_DIRECCION_DIRECCION = Node & {

@@ -143,7 +143,6 @@ const PriceTable = (props: IPriceTableProps) => {
           {props.description}
         </Typography>
         {props.lessons.map((lesson, index) => {
-          const totalHours = parseInt(lesson.dias) * lesson.horas;
           return (
             <CardPrice
               bgColor={"white"}
@@ -265,8 +264,20 @@ const PriceTable = (props: IPriceTableProps) => {
                       : theme.siManejoTertiary.main
                   }
                 >
-                  {`${totalHours} horas en total`}
+                  {`${lesson.totalHours} horas en total`}
                 </Typography>
+                {lesson.alternativeHours ? <Typography
+                  variant="subtitle2"
+                  component="div"
+                  fontWeight={400}
+                  color={
+                    lesson.mostPopular
+                      ? theme.grayScale.light
+                      : theme.siManejoTertiary.main
+                  }
+                >
+                  {lesson.alternativeHours}
+                </Typography> : null}
               </CardContent>
               <CardActions>
                 <CardContentContainer

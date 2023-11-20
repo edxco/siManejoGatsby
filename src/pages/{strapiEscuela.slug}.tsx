@@ -128,6 +128,7 @@ const CityPage = ({ data }: { data: ISchoolSingle }) => {
           currentData.caracteristicas.caracteristicaDetalle
         }
       />
+      <div>asd</div>
       <GoogleMapsCustom />
     </div>
   );

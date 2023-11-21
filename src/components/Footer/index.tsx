@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import MainFooter from "./MainFooter";
-import { INumerosContacto } from "../../atoms/types";
+import { IContactNumbers } from "../../atoms/types";
 import SecondaryFooter from "./SecondaryFooter";
 
 const queryFooter = graphql`
@@ -74,7 +74,7 @@ interface IFooter {
         id: string;
         sucursal: string;
         slug: string;
-        numerosContacto: INumerosContacto;
+        numerosContacto: IContactNumbers;
       };
     }>;
   };

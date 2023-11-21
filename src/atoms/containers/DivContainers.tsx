@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Link, LinkProps } from "@mui/material";
 import { ReactNode } from "react";
+import { webSizes } from "../../constants";
 
 export const FlexContainerCenter = styled.div(
   ({
@@ -42,10 +43,23 @@ interface ICustomLink extends LinkProps {
 }
 
 export const CustomLink = styled(Link)((props: ICustomLink) => ({
-  transitionProperty: 'color',
-  transitionDuration: '0.5s',
+  transitionProperty: "color",
+  transitionDuration: "0.5s",
   ":hover": {
     color: props.hoverColor,
     textDecoration: props.hoverUnderline ? "underline" : "none",
   },
 }));
+
+export const BaseCenterContainer = styled.div(() => ({
+  display: "flex",
+  justifyContent: "center",
+}));
+
+export const MaxWidthContainer = styled.div(
+  ({ isMobile }: { isMobile: boolean }) => ({
+    maxWidth: webSizes.maxWidth,
+    width: isMobile ? "90%" : "100%",
+    margin: "0 auto",
+  })
+);

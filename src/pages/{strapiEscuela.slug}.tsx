@@ -1,11 +1,20 @@
 import React from "react";
-import { graphql, PageProps, useStaticQuery } from "gatsby";
-import { Ciudades } from "../components";
+import { graphql } from "gatsby";
+import {
+  CallUsBanner,
+  GoogleMapsCustom,
+  ImageSlider,
+  InfoSchoolSection,
+  LessonsBenefits,
+  PriceTable,
+} from "../components";
+import { IEscuelas } from "../atoms/types";
+import { IAllStrapiBlogNodes } from "../atoms/types/blog";
 
 //Query
 export const CityPageQuery = graphql`
   query ($slug: String) {
-    allStrapiEscuela(filter: {slug: {eq: $slug}}) {
+    allStrapiEscuela(filter: { slug: { eq: $slug } }) {
       edges {
         node {
           id
@@ -24,7 +33,32 @@ export const CityPageQuery = graphql`
           }
           cursos {
             descripcion
-            id
+            titulo
+            detalleCurso {
+              nombre
+              totalHours
+              alternativeHours
+              dias
+              costo
+              descripcion
+              id
+              mostPopular
+            }
+          }
+          caracteristicas {
+            titulo
+            caracteristicaDetalle {
+              strapi_id
+              descripcion
+              titulo
+              imagen {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(layout: FULL_WIDTH)
+                  }
+                }
+              }
+            }
           }
           descripcion {
             data {
@@ -35,6 +69,20 @@ export const CityPageQuery = graphql`
           numerosContacto {
             id
             telefono
+            whatsapp
+          }
+          schoolbanner {
+            bottomTitle
+            strapi_id
+            title
+            topTitle
+            bgImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(layout: FULL_WIDTH)
+                }
+              }
+            }
           }
           sucursal
           titulo
@@ -45,10 +93,45 @@ export const CityPageQuery = graphql`
   }
 `;
 
-const CityPage: React.FC<PageProps> = ({data}) => {
-//   const data = useStaticQuery<any>(CityPageQuery);
-  console.log(data)
-  return <>Hola! {data.allStrapiEscuela.edges[0].node.sucursal}</>;
+interface ISchoolSingle {
+  allStrapiEscuela: IEscuelas;
+  allStrapiBlog: IAllStrapiBlogNodes;
+}
+
+const CityPage = ({ data }: { data: ISchoolSingle }) => {
+  console.log("====", data);
+
+  const currentData = data.allStrapiEscuela.edges[0].node;
+
+  return (
+    <div style={{ width: "100%", margin: 0, padding: 0 }}>
+      <ImageSlider schoolbanner={currentData.schoolbanner} />
+      <InfoSchoolSection
+        title={currentData.titulo}
+        description={currentData.descripcion.data.descripcion}
+        city={currentData.sucursal}
+      />
+      <CallUsBanner
+        contactNumbers={currentData.numerosContacto}
+        openHours={currentData.horarios}
+        city={currentData.sucursal}
+      />
+      <PriceTable
+        lessons={currentData.cursos.detalleCurso}
+        title={currentData.cursos.titulo}
+        description={currentData.cursos.descripcion}
+        conditions={currentData.terminosCondiciones}
+      />
+      <LessonsBenefits
+        titulo={currentData.caracteristicas.titulo}
+        caracteristicaDetalle={
+          currentData.caracteristicas.caracteristicaDetalle
+        }
+      />
+      <div>asd</div>
+      <GoogleMapsCustom />
+    </div>
+  );
 };
 
 export default CityPage;

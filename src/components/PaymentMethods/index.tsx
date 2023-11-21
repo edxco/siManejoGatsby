@@ -28,7 +28,7 @@ const MainContainer = styled.div(
 const PaymentMethods = (props: IHomePage) => {
   const [mobileSize, tabletSize] = useTableOrMobile();
   const API_URL = useAPIURL();
-  console.log("props payment", props);
+  
   return (
     <FlexContainerCenter
       bgColor={theme.grayScale.light}

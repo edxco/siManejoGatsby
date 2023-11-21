@@ -1,0 +1,14 @@
+.markdown-body {
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+strong {
+    font-weight: 900;
+    color: rgb(26, 56, 99);
+}
+
+p {
+    text-align: justify;
+    font-size: 22px;
+}

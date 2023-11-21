@@ -1,12 +1,21 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import { Avatar, Button, CardMedia, Link, Paper } from "@mui/material";
+import { Avatar, Button, CardMedia, Paper } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useAPIURL } from "../../hooks";
+import { Link } from "gatsby";
 
-const CardContentContainer = styled.div(
-  ({ bgColor, bgColor2, mobileSize }: { bgColor: string; bgColor2: string, mobileSize: boolean }) => ({
+const CardContentContainer = styled(Link)(
+  ({
+    bgColor,
+    bgColor2,
+    mobileSize,
+  }: {
+    bgColor: string;
+    bgColor2: string;
+    mobileSize: boolean;
+  }) => ({
     display: "flex",
     justifyContent: mobileSize ? "flex-start" : "center",
     alignItems: "center",
@@ -14,7 +23,8 @@ const CardContentContainer = styled.div(
     backgroundColor: bgColor,
     padding: "10px 25px",
     cursor: "pointer",
-    width: mobileSize ? '85%' : 'auto',
+    width: mobileSize ? "85%" : "auto",
+    textDecoration: 'none',
     ":hover": {
       backgroundColor: bgColor2,
     },
@@ -25,23 +35,23 @@ interface ICardEscuela {
   slug: string;
   id: string;
   title: string;
-  image: string;
-  whatsapp: string;
+  image?: string;
   mobileSize?: boolean;
 }
 
 export default function ButtonWithImage(props: ICardEscuela) {
   const theme = useTheme();
   const API_URL = useAPIURL();
-
+console.log('final url', props.title, '=', props.image)
   return (
     <CardContentContainer
       bgColor={theme.backGroundColors.main}
       bgColor2={theme.grayScale.light}
       mobileSize={props.mobileSize}
       key={props.title}
+      to={`/${props.slug}`}
     >
-      <Avatar alt="Remy Sharp" src={API_URL + props.image} />
+      {props.image ? <Avatar alt="Remy Sharp" src={API_URL + props.image} /> : <></>}
       <Typography
         variant="h6"
         component="a"
@@ -49,11 +59,10 @@ export default function ButtonWithImage(props: ICardEscuela) {
         color={theme.siManejoPrimary.main}
         align="left"
         lineHeight={"25px"}
-        href={`/${props.slug}`}
         style={{ textDecoration: "none", marginLeft: "15px" }}
       >
         {props.title}
       </Typography>
     </CardContentContainer>
   );
-};
+}

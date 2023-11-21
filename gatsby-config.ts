@@ -8,7 +8,40 @@ const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   // fromURL: process.env.FROM_URL === "true",
   accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: ["escuela", "blog"],
+  collectionTypes: [
+    {
+      singularName: "escuela",
+      queryParams: {
+        populate: {
+          bgBoton: "*",
+          direccion: {
+            populate: "*",
+          },
+          horarios: {
+            populate: "*",
+          },
+          numerosContacto: {
+            populate: "*",
+          },
+          cursos: {
+            populate: "*",
+          },
+          caracteristicas: {
+            populate: {
+              caracteristicaDetalle:{
+                populate: "*",
+              },
+            },
+          },
+          schoolbanner: {
+            populate: "*",
+          },
+          categories: "*",
+        },
+      },
+    },
+    "blog",
+  ],
   singleTypes: [
     {
       singularName: "inicio",
@@ -25,7 +58,9 @@ const strapiConfig = {
           categories: "*",
         },
       },
-    }, `cta-banner`, `footer`
+    },
+    `cta-banner`,
+    `footer`,
   ],
   // remoteFileHeaders: {
   //   /**
@@ -69,7 +104,6 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-strapi`,
       options: strapiConfig,
     },
-    "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
@@ -94,6 +128,12 @@ const config: GatsbyConfig = {
         rule: {
           include: /assets/, // See below to configure properly
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "your-website-bucket",
       },
     },
   ],

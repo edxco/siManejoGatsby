@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 
 export default function useOrientation(): { isRotated: boolean } {
-  const screenOrientation = window.innerWidth > window.innerHeight;
+  let screenOrientation = false;
+  if (typeof window !== "undefined") {
+    screenOrientation = window.innerWidth > window.innerHeight;
+  }
   const [isRotated, setIsRotated] = useState<boolean>(screenOrientation);
 
   useEffect(() => {

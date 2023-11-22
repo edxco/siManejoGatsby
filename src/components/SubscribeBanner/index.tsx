@@ -25,9 +25,9 @@ const SubscribeBanner = (props: ICtaBanner) => {
         </Typography>
         <Button
           variant="contained"
-          size={mobileSize || tabletSize ? "medium" : "large"}
+          size={"large"}
           sx={{
-            mb: 4,
+            margin: mobileSize || tabletSize ? '0 40px 40px 40px' : '0 0 40px 0',
             borderRadius: "30px",
             color: "white",
             backgroundColor: theme.siManejoSecondary.main,

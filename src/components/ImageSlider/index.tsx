@@ -1,26 +1,14 @@
 import React from "react";
-import { graphql, PageProps } from "gatsby";
 import Carousel from "react-multi-carousel";
-import {
-  FlexContainerCenter,
-  TitleAndSubtitle,
-  CardWithImage,
-  BaseCenterContainer,
-  SlideImage,
-} from "../../atoms";
+import { SlideImage } from "../../atoms";
 import styled from "@emotion/styled";
 import { useAPIURL, useTableOrMobile } from "../../hooks";
 import { ISchoolBanner } from "../../atoms/types/cities";
-import { webSizes } from "../../constants";
 
 const CarouselContainer = styled.div(() => ({
   // maxWidth: webSizes.maxWidth,
   width: "100%",
   margin: "0 auto",
-}));
-
-const TitleContainer = styled(BaseCenterContainer)(() => ({
-  margin: "90px 0",
 }));
 
 interface ISlideProps {

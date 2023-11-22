@@ -16,19 +16,20 @@ const MainContainer = styled.div(
   }) => ({
     width: "100%",
     maxWidth: webSizes.maxWidth,
-    padding: 0,
+    padding: tabletSize || mobileSize ? '15px 30px' : 0,
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
     flexWrap: "wrap",
     margin: '20px 0',
+    gap: 30,
   })
 );
 
 const PaymentMethods = (props: IHomePage) => {
   const [mobileSize, tabletSize] = useTableOrMobile();
   const API_URL = useAPIURL();
-  
+  console.log(mobileSize, '\nTablet', tabletSize)
   return (
     <FlexContainerCenter
       bgColor={theme.grayScale.light}

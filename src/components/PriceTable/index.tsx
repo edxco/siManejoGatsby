@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BaseCenterContainer,
   MaxWidthContainer,
@@ -12,6 +12,12 @@ import styled from "@emotion/styled";
 import { priceFormat } from "../../helpers";
 import { Link } from "gatsby";
 import { useMediaQuery } from "react-responsive";
+import {
+  Unstable_NumberInput as BaseNumberInput,
+  NumberInputProps,
+  numberInputClasses,
+} from "@mui/base/Unstable_NumberInput";
+import NumberInput from "./numberInput";
 
 interface IPriceTableProps {
   lessons: Array<IDrivingLessonsProps>;
@@ -71,7 +77,12 @@ const DescriptionContainer = styled(BaseCenterContainer)(() => ({
   margin: "10px 0",
 }));
 
-const CardContentContainer = styled(Link)(
+const CardActionsCustom = styled(CardActions)(() => ({
+  display: 'flex',
+  flexDirection: 'column',
+}));
+
+const CardContentContainer = styled.div(
   ({
     borderLine,
     borderLineHover,
@@ -99,9 +110,19 @@ const CardContentContainer = styled(Link)(
   })
 );
 
-const PriceTable = (props: IPriceTableProps) => {
+interface IButtonBackProps {
+  lessonsDataSubmited: (value: {lessonName: string, lessonPrice: number}) => void;
+}
+
+const PriceTable = (props: IPriceTableProps & IButtonBackProps) => {
   const [mobileSize, tabletSize] = useTableOrMobile();
+  const [value, setValue] = useState<number | undefined>();
   const theme = useTheme();
+
+  const handleLessonsClicked = (lessonName: string, lessonPrice: number) => {
+    console.log("handleLessonsClicked", lessonName, lessonPrice);
+    props.lessonsDataSubmited({lessonName, lessonPrice})
+  };
 
   const viewPort1 = useMediaQuery({
     query: "(min-width: 940px) and (max-width: 1281px)",
@@ -252,7 +273,7 @@ const PriceTable = (props: IPriceTableProps) => {
                       : theme.siManejoTertiary.main
                   }
                 >
-                  {`${lesson.dias} dias / ${lesson.horas} hr por día`}
+                  {`${lesson.dias} dias / ${lesson.hoursPerDay} hr por día`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -266,20 +287,30 @@ const PriceTable = (props: IPriceTableProps) => {
                 >
                   {`${lesson.totalHours} horas en total`}
                 </Typography>
-                {lesson.alternativeHours ? <Typography
-                  variant="subtitle2"
-                  component="div"
-                  fontWeight={400}
-                  color={
-                    lesson.mostPopular
-                      ? theme.grayScale.light
-                      : theme.siManejoTertiary.main
-                  }
-                >
-                  {lesson.alternativeHours}
-                </Typography> : null}
+                {lesson.optionalHours && lesson.optionalHours !== "0" ? (
+                  <Typography
+                    variant="subtitle2"
+                    component="div"
+                    fontWeight={400}
+                    color={
+                      lesson.mostPopular
+                        ? theme.grayScale.light
+                        : theme.siManejoTertiary.main
+                    }
+                  >
+                    {lesson.optionalHours}
+                  </Typography>
+                ) : null}
               </CardContent>
-              <CardActions>
+              <CardActionsCustom>
+                <NumberInput
+                  aria-label="Demo number input"
+                  placeholder="Type a number…"
+                  min={0}
+                  value={value}
+                  onChange={(event, val) => setValue(val)}
+                  style={{ maxWidth: '300px' }}
+                />
                 <CardContentContainer
                   borderLine={
                     lesson.mostPopular
@@ -293,7 +324,9 @@ const PriceTable = (props: IPriceTableProps) => {
                   }
                   mobileSize={mobileSize}
                   key={lesson.id}
-                  to={"#"}
+                  onClick={() =>
+                    handleLessonsClicked(lesson.nombre, lesson.costo)
+                  }
                 >
                   <Typography
                     component="div"
@@ -312,7 +345,7 @@ const PriceTable = (props: IPriceTableProps) => {
                     Reservar / Pago
                   </Typography>
                 </CardContentContainer>
-              </CardActions>
+              </CardActionsCustom>
             </CardPrice>
           );
         })}

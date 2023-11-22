@@ -3,3 +3,4 @@ export { default as useOrientation } from "./useOrientation";
 export { default as useTableOrMobile } from "./useTableOrMobile";
 export { default as useAPIURL } from "./useAPIURL";
 export { default as useOnScreen } from "./useOnScreen";
+export { default as useGMapsKey } from "./useGMapsKey";

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import {
   CallUsBanner,
@@ -10,6 +10,7 @@ import {
 } from "../components";
 import { IEscuelas } from "../atoms/types";
 import { IAllStrapiBlogNodes } from "../atoms/types/blog";
+import { Box, Modal, Typography } from "@mui/material";
 
 //Query
 export const CityPageQuery = graphql`
@@ -37,7 +38,8 @@ export const CityPageQuery = graphql`
             detalleCurso {
               nombre
               totalHours
-              alternativeHours
+              hoursPerDay
+              optionalHours
               dias
               costo
               descripcion
@@ -87,6 +89,10 @@ export const CityPageQuery = graphql`
           sucursal
           titulo
           terminosCondiciones
+          coordenadas {
+            lat
+            lng
+          }
         }
       }
     }
@@ -98,10 +104,27 @@ interface ISchoolSingle {
   allStrapiBlog: IAllStrapiBlogNodes;
 }
 
-const CityPage = ({ data }: { data: ISchoolSingle }) => {
-  console.log("====", data);
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
+const CityPage = ({ data }: { data: ISchoolSingle }) => {
   const currentData = data.allStrapiEscuela.edges[0].node;
+  const [open, setOpen] = useState(false);
+  const [lessonsData, setLessonsData] = useState({
+    lessonName: "",
+    lessonPrice: 0,
+  });
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <div style={{ width: "100%", margin: 0, padding: 0 }}>
@@ -121,6 +144,11 @@ const CityPage = ({ data }: { data: ISchoolSingle }) => {
         title={currentData.cursos.titulo}
         description={currentData.cursos.descripcion}
         conditions={currentData.terminosCondiciones}
+        lessonsDataSubmited={(value) => {
+          console.log("===value", value);
+          setLessonsData(value);
+          setOpen(true);
+        }}
       />
       <LessonsBenefits
         titulo={currentData.caracteristicas.titulo}
@@ -128,8 +156,25 @@ const CityPage = ({ data }: { data: ISchoolSingle }) => {
           currentData.caracteristicas.caracteristicaDetalle
         }
       />
-      <div>asd</div>
-      <GoogleMapsCustom />
+      <GoogleMapsCustom
+        lat={currentData.coordenadas.lat}
+        lng={currentData.coordenadas.lng}
+      />
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {lessonsData.lessonName}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {`$${lessonsData.lessonPrice}`}
+          </Typography>
+        </Box>
+      </Modal>
     </div>
   );
 };

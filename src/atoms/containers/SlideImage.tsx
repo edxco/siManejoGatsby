@@ -5,7 +5,7 @@ import { webSizes } from "../../constants";
 import { BaseCenterContainer } from "./DivContainers";
 import { css } from "@emotion/react";
 import { Typography } from "@mui/material";
-import { useOnScreen } from "../../hooks";
+import { useOnScreen, useTableOrMobile } from "../../hooks";
 
 interface IContainerProps {
   bgImage: IImageDefault;
@@ -24,37 +24,44 @@ const CarouselContainer = styled(BaseCenterContainer)(
   })
 );
 
-const UpperText = styled(Typography)(() => ({
+interface ContainersProps {
+  mobile: boolean;
+  tablet: boolean;
+}
+const UpperText = styled(Typography)((props: ContainersProps) => ({
   opacity: 0.0,
   color: "white",
   fontWeight: 100,
-  fontSize: "22px",
+  fontSize: props.mobile ? "20px" : props.tablet ? "21px" : "22px",
   margin: "0 0 8px 0",
   padding: 0,
   lineHeight: 0,
+  flexWrap: "wrap",
 }));
 
-const MainText = styled(Typography)(() => ({
+const MainText = styled(Typography)((props: ContainersProps) => ({
   opacity: 0.0,
   color: "white",
   fontWeight: 800,
-  fontSize: "64px",
-  margin: 0,
+  fontSize: props.mobile ? "34px" : props.tablet ? "44px" : "64px",
+  margin: props.mobile ? "0 35px" : 0,
   padding: 0,
 }));
 
-const LowerText = styled(Typography)(() => ({
+const LowerText = styled(Typography)((props: ContainersProps) => ({
   opacity: 0.0,
   color: "rgb(203, 22, 27)",
   fontWeight: 400,
-  fontSize: "20px",
+  fontSize: props.mobile || props.tablet ? "16px" : "20px",
   backgroundColor: "white",
   padding: "5px 15px",
   marginTop: "10px",
+  maxWidth: props.mobile || props.tablet ? '300px' : 'auto'
 }));
 
 const SlideImage = (props: ISchoolBanner) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [mobileSize, tabletSize] = useTableOrMobile();
   const isVisible = useOnScreen(ref);
 
   return (
@@ -64,10 +71,13 @@ const SlideImage = (props: ISchoolBanner) => {
         style={
           isVisible ? { transition: "opacity 1s ease-in", opacity: 1 } : {}
         }
+        mobile={mobileSize}
+        tablet={tabletSize}
       >
         {props.topTitle.toUpperCase()}
       </UpperText>
       <MainText
+        align="center"
         ref={ref}
         style={
           isVisible
@@ -78,10 +88,14 @@ const SlideImage = (props: ISchoolBanner) => {
               }
             : {}
         }
+        mobile={mobileSize}
+        tablet={tabletSize}
       >
         {props.title.toUpperCase()}
       </MainText>
       <LowerText
+        mobile={mobileSize}
+        tablet={tabletSize}
         ref={ref}
         style={
           isVisible

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { graphql } from "gatsby";
 import {
   CallUsBanner,
+  FormPrePayment,
   GoogleMapsCustom,
   ImageSlider,
   InfoSchoolSection,
@@ -104,27 +105,8 @@ interface ISchoolSingle {
   allStrapiBlog: IAllStrapiBlogNodes;
 }
 
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 const CityPage = ({ data }: { data: ISchoolSingle }) => {
   const currentData = data.allStrapiEscuela.edges[0].node;
-  const [open, setOpen] = useState(false);
-  const [lessonsData, setLessonsData] = useState({
-    lessonName: "",
-    lessonPrice: 0,
-  });
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <div style={{ width: "100%", margin: 0, padding: 0 }}>
@@ -144,11 +126,7 @@ const CityPage = ({ data }: { data: ISchoolSingle }) => {
         title={currentData.cursos.titulo}
         description={currentData.cursos.descripcion}
         conditions={currentData.terminosCondiciones}
-        lessonsDataSubmited={(value) => {
-          console.log("===value", value);
-          setLessonsData(value);
-          setOpen(true);
-        }}
+        whatsApp={currentData.numerosContacto.whatsapp}
       />
       <LessonsBenefits
         titulo={currentData.caracteristicas.titulo}
@@ -160,21 +138,6 @@ const CityPage = ({ data }: { data: ISchoolSingle }) => {
         lat={currentData.coordenadas.lat}
         lng={currentData.coordenadas.lng}
       />
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {lessonsData.lessonName}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {`$${lessonsData.lessonPrice}`}
-          </Typography>
-        </Box>
-      </Modal>
     </div>
   );
 };

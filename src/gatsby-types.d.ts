@@ -6063,6 +6063,8 @@ type SiteSiteMetadata = {
   readonly fromURL: Maybe<Scalars['Boolean']>;
   readonly googleMapsKey: Maybe<Scalars['String']>;
   readonly image: Maybe<Scalars['String']>;
+  readonly mpAccessToken: Maybe<Scalars['String']>;
+  readonly mpPublicKey: Maybe<Scalars['String']>;
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
   readonly twitterUsername: Maybe<Scalars['String']>;
@@ -6074,6 +6076,8 @@ type SiteSiteMetadataFieldSelector = {
   readonly fromURL: InputMaybe<FieldSelectorEnum>;
   readonly googleMapsKey: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<FieldSelectorEnum>;
+  readonly mpAccessToken: InputMaybe<FieldSelectorEnum>;
+  readonly mpPublicKey: InputMaybe<FieldSelectorEnum>;
   readonly siteUrl: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
   readonly twitterUsername: InputMaybe<FieldSelectorEnum>;
@@ -6085,6 +6089,8 @@ type SiteSiteMetadataFilterInput = {
   readonly fromURL: InputMaybe<BooleanQueryOperatorInput>;
   readonly googleMapsKey: InputMaybe<StringQueryOperatorInput>;
   readonly image: InputMaybe<StringQueryOperatorInput>;
+  readonly mpAccessToken: InputMaybe<StringQueryOperatorInput>;
+  readonly mpPublicKey: InputMaybe<StringQueryOperatorInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
   readonly twitterUsername: InputMaybe<StringQueryOperatorInput>;
@@ -6096,6 +6102,8 @@ type SiteSiteMetadataSortInput = {
   readonly fromURL: InputMaybe<SortOrderEnum>;
   readonly googleMapsKey: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<SortOrderEnum>;
+  readonly mpAccessToken: InputMaybe<SortOrderEnum>;
+  readonly mpPublicKey: InputMaybe<SortOrderEnum>;
   readonly siteUrl: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
   readonly twitterUsername: InputMaybe<SortOrderEnum>;

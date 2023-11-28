@@ -56,7 +56,8 @@ const LowerText = styled(Typography)((props: ContainersProps) => ({
   backgroundColor: "white",
   padding: "5px 15px",
   marginTop: "10px",
-  maxWidth: props.mobile || props.tablet ? '300px' : 'auto'
+  maxWidth: props.mobile || props.tablet ? "300px" : "auto",
+  textAlign: "center",
 }));
 
 const SlideImage = (props: ISchoolBanner) => {

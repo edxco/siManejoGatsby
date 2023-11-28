@@ -18,7 +18,7 @@ const MainContainer = styled(BaseCenterContainer)(
   ({ bgColor }: { bgColor: string }) => ({
     width: "100%",
     margin: 0,
-    padding: '60px 0',
+    padding: "60px 0",
     backgroundColor: bgColor,
     marginTop: "60px",
   })
@@ -69,6 +69,7 @@ interface IButtonProps {
   phoneNumber: string;
   icon: any;
   isMobile?: boolean;
+  isWhatsapp?: boolean;
 }
 
 const CustomCallUsBannerBotton = (props: IButtonProps) => (
@@ -83,7 +84,13 @@ const CustomCallUsBannerBotton = (props: IButtonProps) => (
       "&:hover": { backgroundColor: props.bgColor.light },
       marginRight: "20px",
       marginBottom: props.isMobile ? "20px" : 0,
-      borderRadius: '50px',
+      borderRadius: "50px",
+    }}
+    onClick={(e) => {
+      e.preventDefault();
+      window.location.href = props.isWhatsapp
+        ? `https://api.whatsapp.com/send?phone=${props.whatsApp}&text=Quiero%20informaci%C3%B3n%20de%20los%20cursos%20en%20${props.city}`
+        : `tel:${props.phoneNumber}`;
     }}
     aria-label={props.city}
   >
@@ -99,7 +106,6 @@ const CallUsBanner = (props: IInfoSchoolProps) => {
   const resend = new Resend("re_Q2xrrDbZ_KAgNSihPCfn2BCtqGK4j2soj");
 
   async function sendEmail() {
-    console.log("---a-sd-asd-a-s");
     try {
       const data = await resend.emails.send({
         from: "Acme <onboarding@resend.dev>",
@@ -107,8 +113,6 @@ const CallUsBanner = (props: IInfoSchoolProps) => {
         subject: "Alo World",
         html: "<strong>It works!</strong>",
       });
-
-      console.log("data", data);
     } catch (error) {
       console.error("error", error);
     }
@@ -152,7 +156,8 @@ const CallUsBanner = (props: IInfoSchoolProps) => {
             />
             <CustomCallUsBannerBotton
               bgColor={theme.siManejoSecondary}
-              city={`Whatsapp a ${props.city}`}
+              isWhatsapp={props.contactNumbers.whatsapp ? true : false}
+              city={props.city}
               phoneNumber={props.contactNumbers.whatsapp}
               icon={<WhatsAppIcon />}
               isMobile={mobileSize || tabletSize}
@@ -162,10 +167,10 @@ const CallUsBanner = (props: IInfoSchoolProps) => {
               size="large"
               sx={{
                 backgroundColor: theme.grayScale.light,
-                "&:hover": { backgroundColor: 'white' },
+                "&:hover": { backgroundColor: "white" },
                 marginRight: "20px",
                 marginBottom: mobileSize || tabletSize ? "20px" : 0,
-                borderRadius: '50px',
+                borderRadius: "50px",
               }}
               aria-label={"Deja tus datos y te contactamos"}
             >

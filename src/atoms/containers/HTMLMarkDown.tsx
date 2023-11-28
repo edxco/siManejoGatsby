@@ -9,7 +9,6 @@ const TitleContainer = styled.div(() => ({
   }));
 
 const HTMLMarkDown = ({ description }: { description: string }) => {
-    console.log('description', description)
   return (
     <div className="markdown-body">
       <div

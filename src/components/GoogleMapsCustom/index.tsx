@@ -36,7 +36,6 @@ const GoogleMapsCustom = (props: ICoordinates) => {
     .catch((e) => {
       // do something
     });
-  console.log("props", props);
   return <div style={{ height: "330px" }} id="map"></div>;
 };
 

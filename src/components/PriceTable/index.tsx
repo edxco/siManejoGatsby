@@ -6,7 +6,14 @@ import {
 } from "../../atoms";
 import { useTableOrMobile } from "../../hooks";
 import { useTheme } from "@emotion/react";
-import { Card, CardActions, CardContent, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  Modal,
+  Typography,
+} from "@mui/material";
 import { IDrivingLessonsProps } from "../../atoms/types/cities";
 import styled from "@emotion/styled";
 import { priceFormat } from "../../helpers";
@@ -18,6 +25,7 @@ import {
   numberInputClasses,
 } from "@mui/base/Unstable_NumberInput";
 import NumberInput from "./numberInput";
+import FormPrePayment from "../Forms/prePayment";
 
 interface IPriceTableProps {
   lessons: Array<IDrivingLessonsProps>;
@@ -78,8 +86,8 @@ const DescriptionContainer = styled(BaseCenterContainer)(() => ({
 }));
 
 const CardActionsCustom = styled(CardActions)(() => ({
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
 }));
 
 const CardContentContainer = styled.div(
@@ -110,18 +118,29 @@ const CardContentContainer = styled.div(
   })
 );
 
-interface IButtonBackProps {
-  lessonsDataSubmited: (value: {lessonName: string, lessonPrice: number}) => void;
-}
+const style = {
+  position: "absolute" as "absolute",
+  borderRadius: "16px",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "80%",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+};
 
-const PriceTable = (props: IPriceTableProps & IButtonBackProps) => {
+const PriceTable = (props: IPriceTableProps & { whatsApp: string }) => {
   const [mobileSize, tabletSize] = useTableOrMobile();
-  const [value, setValue] = useState<number | undefined>();
   const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  const [lessonSelected, setLessonSelected] = useState("");
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-  const handleLessonsClicked = (lessonName: string, lessonPrice: number) => {
-    console.log("handleLessonsClicked", lessonName, lessonPrice);
-    props.lessonsDataSubmited({lessonName, lessonPrice})
+  const handlePaymentClic = (id: string) => {
+    setLessonSelected(id);
+    setOpen(true);
   };
 
   const viewPort1 = useMediaQuery({
@@ -173,6 +192,7 @@ const PriceTable = (props: IPriceTableProps & IButtonBackProps) => {
               lastChild={index === props.lessons.length - 1}
               isMobile={viewPort3}
               $maxWidth={maxWidthValue}
+              key={lesson.id}
             >
               <CardContent
                 sx={{
@@ -303,14 +323,6 @@ const PriceTable = (props: IPriceTableProps & IButtonBackProps) => {
                 ) : null}
               </CardContent>
               <CardActionsCustom>
-                <NumberInput
-                  aria-label="Demo number input"
-                  placeholder="Type a number…"
-                  min={0}
-                  value={value}
-                  onChange={(event, val) => setValue(val)}
-                  style={{ maxWidth: '300px' }}
-                />
                 <CardContentContainer
                   borderLine={
                     lesson.mostPopular
@@ -324,9 +336,7 @@ const PriceTable = (props: IPriceTableProps & IButtonBackProps) => {
                   }
                   mobileSize={mobileSize}
                   key={lesson.id}
-                  onClick={() =>
-                    handleLessonsClicked(lesson.nombre, lesson.costo)
-                  }
+                  onClick={() => handlePaymentClic(lesson.id)}
                 >
                   <Typography
                     component="div"
@@ -359,6 +369,21 @@ const PriceTable = (props: IPriceTableProps & IButtonBackProps) => {
           {props.conditions}
         </Typography>
       </CardsContainer>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <FormPrePayment
+            lessons={props.lessons}
+            selectedLesson={lessonSelected}
+            whatsApp={props.whatsApp}
+          />
+        </Box>
+      </Modal>
     </div>
   );
 };

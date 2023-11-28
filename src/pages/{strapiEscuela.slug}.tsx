@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import {
   CallUsBanner,
+  FormPrePayment,
   GoogleMapsCustom,
   ImageSlider,
   InfoSchoolSection,
@@ -10,6 +11,7 @@ import {
 } from "../components";
 import { IEscuelas } from "../atoms/types";
 import { IAllStrapiBlogNodes } from "../atoms/types/blog";
+import { Box, Modal, Typography } from "@mui/material";
 
 //Query
 export const CityPageQuery = graphql`
@@ -37,7 +39,8 @@ export const CityPageQuery = graphql`
             detalleCurso {
               nombre
               totalHours
-              alternativeHours
+              hoursPerDay
+              optionalHours
               dias
               costo
               descripcion
@@ -87,6 +90,10 @@ export const CityPageQuery = graphql`
           sucursal
           titulo
           terminosCondiciones
+          coordenadas {
+            lat
+            lng
+          }
         }
       }
     }
@@ -99,8 +106,6 @@ interface ISchoolSingle {
 }
 
 const CityPage = ({ data }: { data: ISchoolSingle }) => {
-  console.log("====", data);
-
   const currentData = data.allStrapiEscuela.edges[0].node;
 
   return (
@@ -121,6 +126,7 @@ const CityPage = ({ data }: { data: ISchoolSingle }) => {
         title={currentData.cursos.titulo}
         description={currentData.cursos.descripcion}
         conditions={currentData.terminosCondiciones}
+        whatsApp={currentData.numerosContacto.whatsapp}
       />
       <LessonsBenefits
         titulo={currentData.caracteristicas.titulo}
@@ -128,8 +134,10 @@ const CityPage = ({ data }: { data: ISchoolSingle }) => {
           currentData.caracteristicas.caracteristicaDetalle
         }
       />
-      <div>asd</div>
-      <GoogleMapsCustom />
+      <GoogleMapsCustom
+        lat={currentData.coordenadas.lat}
+        lng={currentData.coordenadas.lng}
+      />
     </div>
   );
 };

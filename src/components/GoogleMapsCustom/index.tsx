@@ -1,34 +1,41 @@
 import React from "react";
 import { Loader } from "@googlemaps/js-api-loader";
+import { useGMapsKey } from "../../hooks";
+import { ICoordinates } from "../../atoms/types/cities";
 
-const GoogleMapsCustom = () => {
+const GoogleMapsCustom = (props: ICoordinates) => {
+  const GoogleMapsKey = useGMapsKey();
   const loader = new Loader({
-    apiKey: "",
+    apiKey: GoogleMapsKey,
     version: "weekly",
     libraries: ["places", "marker"],
   });
 
   const mapOptions = {
     center: {
-      lat: 19.04333739260366,
-      lng: -98.23410018607889,
+      lat: Number(props.lat),
+      lng: Number(props.lng),
     },
-    zoom: 13,
+    zoom: 15,
   };
 
   loader
     .load()
     .then((google) => {
-      const mapC = new google.maps.Map(document.getElementById("map"), mapOptions);
-      new google.maps.Marker({position: {
-        lat: 19.04333739260366,
-        lng: -98.23410018607889,
-      }, mapC});
+      const siManejoLocationMap = new google.maps.Map(
+        document.getElementById("map"),
+        mapOptions
+      );
+      if (!siManejoLocationMap) return;
+
+      new google.maps.Marker({
+        position: { lat: Number(props.lat), lng: Number(props.lng) },
+        map: siManejoLocationMap,
+      });
     })
     .catch((e) => {
       // do something
     });
-
   return <div style={{ height: "330px" }} id="map"></div>;
 };
 

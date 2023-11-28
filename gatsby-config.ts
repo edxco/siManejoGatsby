@@ -26,9 +26,12 @@ const strapiConfig = {
           cursos: {
             populate: "*",
           },
+          coordenadas: {
+            populate: "*",
+          },
           caracteristicas: {
             populate: {
-              caracteristicaDetalle:{
+              caracteristicaDetalle: {
                 populate: "*",
               },
             },
@@ -82,6 +85,9 @@ const config: GatsbyConfig = {
     siteUrl: `https://www.simanejo.com`,
     apiURL: process.env.STRAPI_API_URL,
     fromURL: process.env.FROM_URL === "true",
+    googleMapsKey: process.env.GOOGLE_MAPS,
+    mpPublicKey: process.env.MP_PUBLIC_KEY,
+    mpAccessToken: process.env.MP_ACCESS_TOKEN,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin

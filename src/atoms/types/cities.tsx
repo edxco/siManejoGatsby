@@ -33,13 +33,14 @@ export interface IOpenHours {
 
 export interface IDrivingLessonsProps {
   nombre: string;
-  totalHours: string
-  alternativeHours: string;
+  totalHours: string;
+  hoursPerDay: string;
   dias: string;
   costo: number;
   descripcion: string;
   id: string;
   mostPopular: boolean;
+  optionalHours: string;
 }
 
 export interface IDrivingLessons {
@@ -48,6 +49,10 @@ export interface IDrivingLessons {
   detalleCurso: Array<IDrivingLessonsProps>;
 }
 
+export interface ICoordinates {
+  lat: string;
+  lng: string;
+}
 export interface ILessonsBenefitsDetails {
   strapi_id: string;
   descripcion: string;
@@ -86,4 +91,5 @@ export interface IEscuela {
   titulo: string;
   terminosCondiciones: string;
   schoolbanner: Array<ISchoolBanner>;
+  coordenadas: ICoordinates;
 }

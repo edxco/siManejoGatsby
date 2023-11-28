@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "develop": "gatsby develop",
-    "start": "gatsby develop",
+    "start": "gatsby serve --port $PORT --host 0.0.0.0",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -21,6 +21,7 @@
     "@fontsource/inter": "^5.0.12",
     "@googleapis/mybusinessaccountmanagement": "^3.0.8",
     "@googlemaps/js-api-loader": "^1.16.2",
+    "@mercadopago/sdk-js": "^0.0.3",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.4",
     "@mui/styled-engine": "^5.13.2",

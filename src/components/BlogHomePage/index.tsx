@@ -48,7 +48,7 @@ const BlogHomePage = (props: IAllStrapiBlogNodes) => {
       <TitleAndSubtitle
         title={"Blog Si Manejo"}
         subtitle="Te compartimos nuestros consejos, tips y notas para la mejor conducción"
-        margin="0 0 30px 0"
+        margin="0 20px 30px 20px"
       />
       <CarouselContainer>
         <Carousel
@@ -57,7 +57,7 @@ const BlogHomePage = (props: IAllStrapiBlogNodes) => {
           showDots={false}
           responsive={responsive}
           infinite={true}
-          autoPlaySpeed={1000}
+          autoPlaySpeed={3500}
           autoPlay={mobileSize ? true : false}
         >
           {props.nodes.map((blog) => {

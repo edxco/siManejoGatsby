@@ -25,6 +25,7 @@ const BenefitCard = styled(Paper)(({ bgColor, isMobile }: { bgColor: string, isM
   margin: 0,
   padding: "25px",
   backgroundColor: bgColor,
+  borderRadius: '16px',
 }));
 
 const LessonsBenefits = (props: ILessonsBenefits) => {

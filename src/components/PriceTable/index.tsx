@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BaseCenterContainer,
   MaxWidthContainer,
@@ -6,12 +6,26 @@ import {
 } from "../../atoms";
 import { useTableOrMobile } from "../../hooks";
 import { useTheme } from "@emotion/react";
-import { Card, CardActions, CardContent, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  Modal,
+  Typography,
+} from "@mui/material";
 import { IDrivingLessonsProps } from "../../atoms/types/cities";
 import styled from "@emotion/styled";
 import { priceFormat } from "../../helpers";
 import { Link } from "gatsby";
 import { useMediaQuery } from "react-responsive";
+import {
+  Unstable_NumberInput as BaseNumberInput,
+  NumberInputProps,
+  numberInputClasses,
+} from "@mui/base/Unstable_NumberInput";
+import NumberInput from "./numberInput";
+import FormPrePayment from "../Forms/prePayment";
 
 interface IPriceTableProps {
   lessons: Array<IDrivingLessonsProps>;
@@ -71,7 +85,12 @@ const DescriptionContainer = styled(BaseCenterContainer)(() => ({
   margin: "10px 0",
 }));
 
-const CardContentContainer = styled(Link)(
+const CardActionsCustom = styled(CardActions)(() => ({
+  display: "flex",
+  flexDirection: "column",
+}));
+
+const CardContentContainer = styled.div(
   ({
     borderLine,
     borderLineHover,
@@ -99,9 +118,30 @@ const CardContentContainer = styled(Link)(
   })
 );
 
-const PriceTable = (props: IPriceTableProps) => {
+const style = {
+  position: "absolute" as "absolute",
+  borderRadius: "16px",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "80%",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+};
+
+const PriceTable = (props: IPriceTableProps & { whatsApp: string }) => {
   const [mobileSize, tabletSize] = useTableOrMobile();
   const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  const [lessonSelected, setLessonSelected] = useState("");
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const handlePaymentClic = (id: string) => {
+    setLessonSelected(id);
+    setOpen(true);
+  };
 
   const viewPort1 = useMediaQuery({
     query: "(min-width: 940px) and (max-width: 1281px)",
@@ -152,6 +192,7 @@ const PriceTable = (props: IPriceTableProps) => {
               lastChild={index === props.lessons.length - 1}
               isMobile={viewPort3}
               $maxWidth={maxWidthValue}
+              key={lesson.id}
             >
               <CardContent
                 sx={{
@@ -252,7 +293,7 @@ const PriceTable = (props: IPriceTableProps) => {
                       : theme.siManejoTertiary.main
                   }
                 >
-                  {`${lesson.dias} dias / ${lesson.horas} hr por día`}
+                  {`${lesson.dias} dias / ${lesson.hoursPerDay} hr por día`}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -266,20 +307,22 @@ const PriceTable = (props: IPriceTableProps) => {
                 >
                   {`${lesson.totalHours} horas en total`}
                 </Typography>
-                {lesson.alternativeHours ? <Typography
-                  variant="subtitle2"
-                  component="div"
-                  fontWeight={400}
-                  color={
-                    lesson.mostPopular
-                      ? theme.grayScale.light
-                      : theme.siManejoTertiary.main
-                  }
-                >
-                  {lesson.alternativeHours}
-                </Typography> : null}
+                {lesson.optionalHours && lesson.optionalHours !== "0" ? (
+                  <Typography
+                    variant="subtitle2"
+                    component="div"
+                    fontWeight={400}
+                    color={
+                      lesson.mostPopular
+                        ? theme.grayScale.light
+                        : theme.siManejoTertiary.main
+                    }
+                  >
+                    {lesson.optionalHours}
+                  </Typography>
+                ) : null}
               </CardContent>
-              <CardActions>
+              <CardActionsCustom>
                 <CardContentContainer
                   borderLine={
                     lesson.mostPopular
@@ -293,7 +336,7 @@ const PriceTable = (props: IPriceTableProps) => {
                   }
                   mobileSize={mobileSize}
                   key={lesson.id}
-                  to={"#"}
+                  onClick={() => handlePaymentClic(lesson.id)}
                 >
                   <Typography
                     component="div"
@@ -312,7 +355,7 @@ const PriceTable = (props: IPriceTableProps) => {
                     Reservar / Pago
                   </Typography>
                 </CardContentContainer>
-              </CardActions>
+              </CardActionsCustom>
             </CardPrice>
           );
         })}
@@ -326,6 +369,21 @@ const PriceTable = (props: IPriceTableProps) => {
           {props.conditions}
         </Typography>
       </CardsContainer>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <FormPrePayment
+            lessons={props.lessons}
+            selectedLesson={lessonSelected}
+            whatsApp={props.whatsApp}
+          />
+        </Box>
+      </Modal>
     </div>
   );
 };
